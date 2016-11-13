@@ -7,7 +7,7 @@ style=alphabetic,
 sorting=ynt
 ]{biblatex}
 
-\addbibresource{bibliography.bib}
+\addbibresource{main.bib}
 
 \input{/home/mrkgnao/math/macroni/generated-preamble.tex}
 \input{/home/mrkgnao/math/uncategorized/preamble.tex}
@@ -20,11 +20,12 @@ sorting=ynt
 % Remember: \bff, \htt, \rmm, \rqq, \fii are weird
 \maketitle
 
-A \textit{number field} is a finite extension $L/\bq$. A \textit{function field} (over a finite field) is a finite extension of $\ffq$.
+\input{./chapters/intro.tex}
+
+\printbibliography
 
 \input{./chapters/frenkel.tex}
 \input{./chapters/artin-whaples.tex}
 
-\printbibliography
 
 \end{document}
