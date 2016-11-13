@@ -1,0 +1,132 @@
+\chapter{Adeles}
+
+\section{Preliminaries from Galois theory}
+We will let $K$ be a number field.
+Denote by $\fldk$ the category of field extensions of $k$.
+
+\begin{thm}[Fundamental theorem of Galois theory]
+  There is a functor
+  \[\dr \galfctk {\opp\fldk} \grp,\]
+  the \textit{Galois group functor}.
+\end{thm}
+
+In particular, this means that given a $k$-automorphism $K\to L$, we get a
+morphism of Galois groups
+\[\gall \to \galk\]
+since any automorphism of $L$ fixes $K$.
+
+Recall that the field of \textit{cyclotomic numbers}, $\qzetn$, has Galois
+group
+\[\Gal(\qzetn/\bq) \cong \znzt \]
+where $[n]\in\znz$ acts as the $n$-th power map.
+
+\section{Class field theory}
+
+\begin{thm}[Kronecker-Weber]
+  The maximal abelian extension $\qab$ of $\bq$ satisfies
+  \[ \qab = \bigcup_n \qzetn \]
+  where, for $m|n$, we identify $\qzet m$ with the canonically given subfield of
+  $\qzetn$.
+\end{thm}
+
+In particular, we may now apply $\gal - \bq$ to get the following:
+
+\[ \agqab := \galqab \cong \varprojlim_n \znzt \]
+ 
+Here the limit is taken with respect to the system of surjections
+
+\[ \dr {\pi_ n^m} {\znzt} {\zmzt} \]
+
+that sends, for instance, $[5]\in{\zmod 6}$ to $[1]\in\zmod 3$.
+
+What does an element of $\agqab$ look like? By the definition of the inverse
+limit of a filtered set (TODO check this), an element of $\agqab$ is a collection of
+elements
+
+\[ \alpha_n \in \znz \]
+
+compatible with the $\pi_m^n$, where by
+\textit{compatibility} we mean that
+
+\[ m|n \implies \pi_n^m(\alpha_m) = \alpha_n. \]
+
+\subsection{Describing $\agqab$ with $p$-adics}
+(fill in defns of $\zp$ and $\qp$ later)
+
+We have the following classical result:
+
+\begin{thm}[Chinese remainder theorem]
+  There exists an isomorphism
+  \[ \znz \cong \prod_p \zmod {p^{\nu_p(n)}}. \]
+\end{thm}
+
+\begin{defn}
+  We denote by
+  \[ \zhat = \varprojlim_n \znz \]
+  the \textit{profinite completion} of $\bz$, where the limit is taken with
+  respect to the natural system of surjections considered in the previous section.
+\end{defn}
+
+Now note that
+
+\begin{align*}
+  \zhat &= \varprojlim_n \znz \\
+        &\cong \varprojlim_n \prod_p \zmod {p^{\nu_p(n)}} \\
+        &\cong \prod_p \varprojlim_r \zmod {p^r} 
+\end{align*}
+
+which finally gives us
+
+\[ \zhat \cong \prod_p \zp. \]
+
+Now observe that the Kronecker-Weber theorem can be understood as saying that
+$\agqab \cong \ut{\zhat}$. Using the product expression for $\zhat$, we find
+that
+
+\[ \galqab \cong \prod_p \zpt. \]
+
+\section{Class field theory}
+The obvious next step is, given a number field $F/\bq$, to try to ``upgrade''
+the Kronecker-Weber theorem and describe its maximal abelian extension $\ab F$.
+
+No such analog is known. However, we do have a description of $\galfab$, the
+abelianized Galois group of $F$, via class field theory.
+
+\subsection{Adeles and ideles}
+\label{sec:adeles-ideles}
+
+\subsubsection{The special case of $F=\bq$}
+
+Define the ring of \textit{integral adeles}
+
+\[ \adz = \br \times \zhat \]
+
+and the ring of \textit{adeles} as
+
+\[ \adq = \adz \otimes_\bz \bq. \]
+
+We can put a topology on this: let $\zhat$ have the product topology inherited
+from the $\zp$, give $\bq$ the discrete topology, and let $\br$ have its usual
+topology. This makes $\adq$ a topological ring, with a diagonal embedding
+$\bq\to\adq$. There is a similar embedding $\qt \to \adqt$.
+
+Notice that the quotient
+
+\[ \adq/\bq \simeq \zhat \times (\br/\bz) \]
+
+is compact, since $\zhat$ is a profinite group and hence compact.
+
+In the special case of $F=\bq$, the statement of class field theory is that
+$\galqab$ is isomorphic to the group of connected components of the quotient
+$\adqt/\qt$. With the previous statement, we see that
+
+\[ \adqt/\qt \simeq \rgt \times \prod_p \zpt. \]
+
+Since $\rgt$ is very conencted, the group of connected components is isomorphic
+to $\prod_p \zpt$, thus verifying the Kronecker-Weber theorem.
+
+\subsubsection{More general settings}
+
+Now we generalize to arbitrary $F/\bq$.
+
+

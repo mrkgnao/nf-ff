@@ -1,0 +1,173 @@
+% Created 2016-11-06 Sun 10:10
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{fixltx2e}
+\usepackage{graphicx}
+\usepackage{grffile}
+\usepackage{longtable}
+\usepackage{wrapfig}
+\usepackage{rotating}
+\usepackage[normalem]{ulem}
+\usepackage{amsmath}
+\usepackage{textcomp}
+\usepackage{amssymb}
+\usepackage{capt-of}
+\usepackage{hyperref}
+\input{/home/mrkgnao/math/preamble.tex}
+\author{Soham Chowdhury}
+\date{\textit{<2016-09-16 Fri>}}
+\title{Notes on Artin-Whaples}
+\hypersetup{
+ pdfauthor={Soham Chowdhury},
+ pdftitle={Notes on Artin-Whaples},
+ pdfkeywords={},
+ pdfsubject={},
+ pdfcreator={Emacs 25.1.50.1 (Org mode 8.3.5)}, 
+ pdflang={English}}
+\begin{document}
+
+\maketitle
+\tableofcontents
+
+
+\section{Main theorem}
+\label{sec:orgheadline1}
+If a field satisfies the valuation product formula, and if one of those valuations is of a suitable type, then it is forced to be either a number field or a function field.
+
+\section{Valuations}
+\label{sec:orgheadline6}
+\subsection{{\bfseries\sffamily TODO} Prime divisor = ``equivalence class of valuations''}
+\label{sec:orgheadline2}
+\subsection{Lemmas}
+\label{sec:orgheadline3}
+\begin{itemize}
+\item If \(|\cdot|_1\) and \(|\cdot|_2\) are two inequivalent valuations, there is some \(\gamma\) such that \[|\gamma|_1 < 1 \text{ and } |\gamma|_2 > 1.\]
+\item If \(|\cdot|_i\) are inequivalent, there is some \(\alpha\) such that \[|\alpha|_1 > 1\text{ and }|\alpha|_{i>1} < 1.\]
+\item If \(|\cdot|_i\) are inequivalent, for every \(\epsilon>0\), there is an \(\alpha\) such that \[|\alpha-1|_1 \leq 1 \text{ and } |\alpha|_{\nu>1}\leq 1.\]
+\end{itemize}
+\subsection{Approximation theorem}
+\label{sec:orgheadline4}
+Given pairs \((|\cdot|_i, \alpha_i)\), with the \(|\cdot|_i\) inequivalent, then for every \(\epsilon>0\) there is some \(\alpha\) with 
+\[|\alpha - \alpha_i|_i < \epsilon.\]
+\subsection{Corollary}
+\label{sec:orgheadline5}
+If \(|\cdot|_i\) are nontrivial and inequivalent, then any identity of the form
+\[\prod |\alpha|_{i}^{\nu_i} = 1\]
+with \(0\neq \alpha\in k\) implies that the \(\nu_i\) are all \(0\).
+This ``precludes the possibility that a finite number of valuations can ever be interrelated'', to paraphrase the original, but maybe an infinite number of valuations is okay?
+\section{The product formula}
+\label{sec:orgheadline26}
+\subsection{Axiom 1}
+\label{sec:orgheadline7}
+There is a set \(M\) of pairs \((\pp, |\cdot|_\pp)\) such that, for any \(0\neq \alpha \in k\),
+\begin{itemize}
+\item \(\val\alpha\pp = 1\) for almost all \(\pp\)
+\item Extending the product over all primes, 
+\[ \prod_\pp \val\alpha\pp = 1 \]
+\end{itemize}
+For instance, for \(6\in\Q\), the product looks like
+\[ \val6{(0)} \cdot\val6{(2)}\cdot\val6{(3)} = 6\cdot 2^{-1} \cdot 3^{-1} = 1 \]
+\subsection{Idèles}
+\label{sec:orgheadline19}
+We associate to \(M\) a space of vectors \(v={ (v_\pp) }_\pp\), where \(v_\pp \in k_\pp\). We will write \(\val v\pp\) for \(\val{v_\pp}\pp\).
+\subsubsection{Definition}
+\label{sec:orgheadline8}
+A vector of this form is an idele if 
+\begin{itemize}
+\item \(v_\pp\neq 0\) for all \(\pp\)
+\item \(v_\pp = 1\) for almost all \(\pp\)
+\end{itemize}
+\subsubsection{Embedding}
+\label{sec:orgheadline9}
+There is a natural embedding \(k\hookrightarrow V(k)\) reminiscent of the ``diagonal embedding'': writing \(i_\pp\) for the inclusion \(k\to k_\pp\),
+\[\alpha\mapsto{ (i_\pp(\alpha)) }_\pp\]
+\subsubsection{``Volume''}
+\label{sec:orgheadline12}
+For each idele \(\fka\), define
+\[V(\fka) = \prod_\pp \val\fka\pp \]
+\begin{enumerate}
+\item For elements coming from \(k\) via the embedding, notice that we have \(V(\alpha) = 1\). This gives
+\label{sec:orgheadline10}
+\[V(\alpha\fka) = V(\fka)\]
+\item A map \(\pp\mapsto x_\pp \in\R\), with \(x_\pp = 1\) for almost all \(\pp\), gives a set of vectors \(\val c\pp \leq \val\fka\pp\) which we call the parallelotope with dimensions \(x\).
+\label{sec:orgheadline11}
+\end{enumerate}
+\subsubsection{Order}
+\label{sec:orgheadline16}
+(\sout{\textbf{I don't get this yet. Arbitrary integer \ldots{} what?}} Wait, now I do.)
+
+The order of a set of elements is defined as follows:
+\begin{enumerate}
+\item If \(k\) has an archimedean valuation, then order is the number of elements.
+\label{sec:orgheadline13}
+\item If not, there is some field of constants \(k_0\subset k\). The order of a set is then defined to be \(q^s\), where we define \(q\) and \(s\) as follows:
+\label{sec:orgheadline15}
+\begin{enumerate}
+\item If \(k_0\) is finite, \(q\) is its number of elements. Otherwise, \(q\) is an arbitrary fixed number greater than \(1\).
+\label{sec:orgheadline14}
+\(s\) is the number of elements in the set that are linearly independent over \(k_0\).
+\end{enumerate}
+\end{enumerate}
+\subsubsection{The \(M\)-function}
+\label{sec:orgheadline17}
+The order of a set of elements contained in the parallelotope of size \(\fka\) will be denoted \(M(\fka)\).
+Note that, for nonzero \(\theta\in k\), \(M(\theta\fka)=M(\fka)\) since multiplying by \(\theta\) changes the parallelotope of size \(\fka\) into the parallelotope of size \(\theta\fka\) and does not change the order.
+\subsubsection{The ring of \(\pp\)-integers}
+\label{sec:orgheadline18}
+The set of elements \(\alpha\in k\) for which \(\val\alpha\pp \leq 1\) forms a ring, which we denote \(\op\).
+The subset of \(\op\) with \(\val\alpha\pp < 1\) forms an ideal in this ring, which, by abuse of notation, is also denoted \(\pp\). Now we have a quotient field \(\op/\pp\), and so on. The \emph{order} of this field is called the norm \(N\pp\) of \(\pp\). For instance, if there is a constant field \(k_0\subseteq k^{\pp} = \op/\pp\), we have
+\[ N\pp = {(\# k_0)}^{[k^\pp : k_0]} \]
+\subsection{Axiom 2}
+\label{sec:orgheadline20}
+The set \(M\) of \ref{sec:orgheadline7} contains at least one prime \(\qq\), which is either
+\begin{itemize}
+\item discrete, with a finite quotient field of finite order \(N\qq\)
+\item archimedean, with \(k_\qq=\R\) or \(\C\)
+\end{itemize}
+\subsection{Another valuation}
+\label{sec:orgheadline21}
+For \(\alpha\neq 0\), define a valuation as follows:
+\begin{itemize}
+\item For \(\pp \not | \infty\) set
+\[ { ||\alpha|| }_\pp = \frac1{ N\pp^\nu } \]
+where \(\nu = \ord_\pp(\alpha)\).
+\item If \(k=\R\), \(||\cdot||_\pp\) is defined to be the standard absolute value.
+\item If \(k=\C\), \(||\cdot||_\pp\) is set to be the squared absolute value.
+\end{itemize}
+\subsection{Theorem 2}
+\label{sec:orgheadline25}
+We can construct \(M\) such that both \ref{sec:orgheadline7} and \ref{sec:orgheadline20} hold for the following fields:
+\begin{itemize}
+\item a number field, i.e., a finite extension \(K/\Q\)
+\item a field of algebraic functions over any field \(k_1\) (that is, a finite extension \(K/k_1(z)\) with \(z\) transcendental \(/k_1\))
+\end{itemize}
+\subsubsection{Lemma 4}
+\label{sec:orgheadline22}
+\subsubsection{Lemma 5}
+\label{sec:orgheadline23}
+\subsubsection{Lemma 6}
+\label{sec:orgheadline24}
+
+\section{Characterizing fields by the valuation product formula}
+\label{sec:orgheadline28}
+\subsection{(Main) theorem 3}
+\label{sec:orgheadline27}
+If a field satisfies \ref{sec:orgheadline7} and \ref{sec:orgheadline20}, it is of one of the two types in \ref{sec:orgheadline25}. Furthermore, \ref{sec:orgheadline20} is satisfied for every place \(\pp\).
+
+\section{Parallelotopes}
+\label{sec:orgheadline31}
+\subsection{Theorem 4}
+\label{sec:orgheadline29}
+There are positive \(C, D\) such that for all ideles \(\fka\) we have
+\[ CV(\fka) < M(\fka) \leq \max(1, DV(\fka)) \]
+
+\subsection{Definitions}
+\label{sec:orgheadline30}
+Let \(U\) be the multiplicative group of ``absolute units'', that is, \(x\in k\) is in \(U\) if \({||x||}_\pp = 1\) for all \(\pp\).
+\begin{itemize}
+\item If there is a constant field \(k_0\), \(U=\ut {k_0}\).
+\item ``In case order means number of elements, \(U\) must be a finite group since it is contained in the parallelotope of size \(1\), so \(U\) consists of all roots of unity in \(k\).
+\end{itemize}
+Now select a finite set \(S\) of primes that contains all the archimedean primes. By \(\fka_S\) we mean the ideles \(\fka\) such that \(\vval{ \fka } = 1\) for all \(\pp\not\in S\). As one might expect, \(e_\pp\in k\) which belong to \(\fka_S\) are called \(S\)-units.
+\end{document}
