@@ -2,13 +2,109 @@
 \section{Introduction}
 \label{sec:orgheadline1}
 
-In \cite{artinwhaples}, the following theorem is proven:
-If a field satisfies the valuation product formula, and if one of those valuations is of a suitable type, then it is forced to be either a number field or a function field.
+A striking piece of evidence in favor of our hypothesis that number fields and
+function fields are more similar than one might expect is given by
+\cite{artinwhaples}, which proves the following theorem:
 
-\section{Valuations}
+\begin{thm}[Main theorem of \cite{artinwhaples}]
+  If a field satisfies the valuation product formula, and if one of those
+  valuations is of a suitable type, then it is forced to be either a number
+  field or a function field.
+\end{thm}
+
+We will now examine the proof of the following theorem, essentially following
+the original in its development of the material.
+
+\section{Places and valuations}
 \label{sec:orgheadline6}
-\subsection{{\bfseries\sffamily TODO} Prime divisor = ``equivalence class of valuations''}
-\label{sec:orgheadline2}
+
+\subsection{Valuations}
+\label{sec:valuations}
+
+A valuation on a field is a way to assign a ``size'' to its elements in a way
+that fits our usual expectations of how such functions should behave. For
+instance, we have the valuation
+\[ |\cdot| : \bc \to \br \]
+
+which is defined by the mapping
+
+ \[ |a + ib| \mapsto \sqrt{a^2 + b^2} \]
+
+for $a+ib\in\bc$.
+
+The properties this satisfies (nonnegativity, the triangle inequality, and so
+on) are abstracted by the following definition:
+
+\begin{defn}
+  Let $k$ be a field. A function $|\cdot|: k\to\br$ is called a
+  \textit{valuation} if it satisfies the following properties:\footcite[section
+  1]{artinwhaples}
+  \begin{enumerate}
+  \item $|\alpha| = 0 \iff \alpha = 0$
+  \item $\im |\cdot|\subset \rgt$
+  \item $|\alpha\beta| = |\alpha||\beta|$
+  \item $|\alpha + \beta| \leq |\alpha| + |\beta|$
+  \end{enumerate}
+\end{defn}
+
+If a valuation satisfies the following, it is called \textit{nonarchimedean}
+(and \textit{archimedean} otherwise):
+
+\begin{enumerate}
+\item[3'] $|\alpha + \beta| \leq \max(|\alpha|,|\beta|)$
+\end{enumerate}
+
+\subsection{Motivation for places}
+\label{sec:whatisaplace}
+When working with number fields other than $\bq$, we find that there are ``more
+primes'' than we might expect. In a naive sense, of course, this is true: for
+instance, we have primes like $(1+i)$ in $\bq(i)$.
+
+More generally, we can look at a prime ideal in the ring of integers and
+consider the valuation it gives rise to.
+
+
+For instance, $(3)\subset\zi$ gives us
+the valuation
+
+\[ \val x 3 = \val x {(3)} = 3^{-\nu_3(x)} \]
+
+with, e.g. $ \val {36} 3 = 3^{-2} $.
+
+We might then decide to consider the valuations themselves as the fundamental
+objects. This is very useful: the finite places of a field are in one-to-one
+correspondence with the prime ideals of its ring of integers. \cite{201565}
+
+Of course, this on its own is not very useful, since there are many,
+many more possible valuations than there are ``generalized primes'' (however one
+wishes to define that).
+
+\subsection{The equivalence relation on places}
+
+The solution is to define a notion of \textit{equivalence} for valuations. One
+way to do it is by noticing the following:
+
+\begin{thm}
+  Every valuation on a field induces a metric on it.
+\end{thm}
+
+A metric defines a metric space structure, and hence a topological space
+structure, on the field. We can now say that
+
+\begin{defn}
+  Two valuations $\val \cdot \pp$ and $\val\cdot\qq$ are \textit{equivalent} if
+  they determine identical topological space structures on the field.
+\end{defn}
+
+Notice that raising an absolute value to any power less than $1$ gives rise to
+another absolute value. We can, hence, define two absolute values to be
+equivalent if there is some power $c\in(0,1)$ for which
+\[|\cdot|_1 = |\cdot|_2^c\].
+
+These two definitions of \textit{equivalent} are actually equivalent!
+
+
+\section{The proof}
 \subsection{Lemmas}
 \label{sec:orgheadline3}
 \begin{itemize}
