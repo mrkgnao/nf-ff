@@ -1,7 +1,11 @@
-\chapter{Adeles}
+\chapter{The structure of number fields}
+
+We will follow \cite{frenkel} in this chapter. Throughout this chapter, when not
+otherwise noted, $K$ and $F$ will be number fields.
+
+\cite{kks1} and \cite{kks2} are references for the material in this chapter.
 
 \section{Preliminaries from Galois theory}
-We will let $K$ be a number field.
 Denote by $\fldk$ the category of field extensions of $k$.
 
 \begin{thm}[Fundamental theorem of Galois theory]
@@ -10,17 +14,50 @@ Denote by $\fldk$ the category of field extensions of $k$.
   the \textit{Galois group functor}.
 \end{thm}
 
-In particular, this means that given a $k$-automorphism $K\to L$, we get a
-morphism of Galois groups
-\[\gall \to \galk\]
-since any automorphism of $L$ fixes $K$.
+Translated from the categorical language, there is an association
+
+\[ K/k \longleftrightarrow \galk \]
+
+for every field extension $K/k$ (or for every field $K$ ``over $k$''). This
+association is \textit{functorial} in the sense that, for every $k$-morphism of
+fields $\phi: K/k \to L/k$, we have a commutative diagram
+
+\[
+  \xymatrix{
+    K/k   \ar[d] \ar[r]^\phi &L/k \ar[d]\\
+    \galk &\gall \ar[l]^{\Gal(\phi)}   }
+\]
+
+\subsection{Cyclotomic fields}
 
 Recall that the field of \textit{cyclotomic numbers}, $\qzetn$, has Galois
 group
 \[\Gal(\qzetn/\bq) \cong \znzt \]
-where $[n]\in\znz$ acts as the $n$-th power map.
+where $[n]\in\znz$ acts as the $n$-th power map. This can be seen by noticing
+that the action of an element $\sigma$ of the Galois group on the field is completely
+determined by where it sends $\zeta_n$.
 
 \section{Class field theory}
+
+\subsection{Abelian extensions}
+
+The study of general extensions of $\bq$ has proven technically challenging so
+far. While the fact that $\bq$ is a ``nice'' field means we have Galois theory
+at our disposal, arbitrary Galois extensions are too varied to be understood
+using field-theoretic methods alone.
+
+However, the \textit{abelian} extensions are a particularly tractable class
+of extensions, whose structure is completely given by the class field theory of
+number fields, or more generally, the class field theory of global fields (of
+which function fields are the other main example).
+
+\begin{defn}
+  An \textit{abelian} extension of $\bq$ is an extension $K/\bq$ with
+  $\Gal(K/\bq)$ abelian.
+\end{defn}
+
+For instance, extensions like $\bq(i)$ are manifestly abelian. (TODO add
+examples and nonexamples)
 
 \begin{thm}[Kronecker-Weber]
   The maximal abelian extension $\qab$ of $\bq$ satisfies
@@ -29,15 +66,25 @@ where $[n]\in\znz$ acts as the $n$-th power map.
   $\qzetn$.
 \end{thm}
 
-In particular, we may now apply $\gal - \bq$ to get the following:
+\subsection{A first look at $\agqab$}
+
+The Galois group of the maximal abelian extension, $\agqab$, is in fact the
+abelianization of the absolute Galois group $\galq$ of $\bq$.\footnote{This
+  holds for any field. (nice enough?)} The
+Kronecker-Weber theorem allows us to apply $\gal - \bq$ to get the following
+first description of the abelianized Galois group of $\bq$, noting that the
+union operation is the colimit in the category of sets, and contravariant
+functors like $\Gal(-/\bq)$ ``turn the arrows around'':
 
 \[ \agqab := \galqab \cong \varprojlim_n \znzt \]
- 
+
 Here the limit is taken with respect to the system of surjections
 
-\[ \dr {\pi_ n^m} {\znzt} {\zmzt} \]
+\[ \dr {\pi_ n^m} {\znzt} {\zmzt} \text{for all } m|n \]
 
-that sends, for instance, $[5]\in{\zmod 6}$ to $[1]\in\zmod 3$.
+that sends, for instance, $[5]\in{\zmod 6}$ to $[1]\in\zmod 3$. This can be
+thought of as ``throwing away'' the information carried by the other factors
+(which is just $2$ in this case).
 
 What does an element of $\agqab$ look like? By the definition of the inverse
 limit of a filtered set (TODO check this), an element of $\agqab$ is a collection of
@@ -72,7 +119,7 @@ Now note that
 \begin{align*}
   \zhat &= \varprojlim_n \znz \\
         &\cong \varprojlim_n \prod_p \zmod {p^{\nu_p(n)}} \\
-        &\cong \prod_p \varprojlim_r \zmod {p^r} 
+        &\cong \prod_p \varprojlim_r \zmod {p^r}
 \end{align*}
 
 which finally gives us
@@ -130,5 +177,3 @@ to $\prod_p \zpt$, thus verifying the Kronecker-Weber theorem.
 \subsubsection{More general settings}
 
 Now we generalize to arbitrary $F/\bq$.
-
-
