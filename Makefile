@@ -24,7 +24,7 @@ all: $(PROJNAME).pdf
 # missing file reference and interactively asking you for an alternative.
 
 $(PROJNAME).pdf: $(PROJNAME).tex
-	latexmk -pdf -pdflatex="pdflatex -interactive=nonstopmode" -use-make $<
+	latexmk -pdf --synctex=1 -interaction=nonstopmode -file-line-error -use-make $<
 
 cleanall:
 	latexmk -C

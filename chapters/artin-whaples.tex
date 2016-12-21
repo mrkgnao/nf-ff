@@ -242,24 +242,24 @@ valuation in a set of mutually inequivalent ones.
 \end{lemma}
 
 \begin{proof}
- Choose an appropriate $\gamma$ according to the previous lemma, so that $\val
- \beta 1 > 1$ and $\val \beta i < 1$ for $i > 1$. Set
+  Choose an appropriate $\gamma$ according to the previous lemma, so that $\val
+  \gamma 1 > 1$ and $\val \gamma i < 1$ for $i > 1$. Set
 
- \[ \alpha = \frac {\beta^r} {1 + \beta^r} \]
+  \[ \alpha = \frac {\gamma^r} {1 + \gamma^r} \]
 
- Then
+  Then
 
- \[ \val {\alpha - 1} 1 = \frac 1 {\val {1 + \beta^r} 1} \leq \frac 1 {\val
-     \beta 1 ^r}\footnote{The $\val \cdot 1$ in the denominator is just a
-     $|\cdot|$ in the original paper, which I suspect is a typo since $|\cdot|$
-     hasn't been defined to mean anything at this point.} \leq \epsilon \]
+  \[ \val {\alpha - 1} 1 = \frac 1 {\val {1 + \gamma^r} 1} \leq \frac 1 {\val
+      \gamma 1 ^r}\footnote{The $\val \cdot 1$ in the denominator is just a
+      $|\cdot|$ in the original paper, which I suspect is a typo since $|\cdot|$
+      hasn't been defined to mean anything at this point.} \leq \epsilon \]
 
- for $r$ sufficiently large, while, for $i>1$, we have
+  for $r$ sufficiently large, while, for $i>1$, we have
 
- \[ \val \alpha i = \frac {\val \beta i ^r} {\val {1 + \beta^r} i} \leq \frac
-   {\val \beta i ^r} {1 - \val \beta i ^r} \leq \epsilon \]
+  \[ \val \alpha i = \frac {\val \gamma i ^r} {\val {1 + \gamma^r} i} \leq \frac
+    {\val \gamma i ^r} {1 - \val \gamma i ^r} \leq \epsilon \]
 
- (again, for $r$ sufficiently large).
+  (again, for $r$ sufficiently large).
 
 \end{proof}
 
@@ -272,15 +272,56 @@ valuation in a set of mutually inequivalent ones.
 \end{thm}
 
 \begin{proof}
- asdf
+  Let
+
+  \[ M = \max \{ \val {\alpha_i} j : 1\leq i, j\leq n \} \]
+
+  and choose $\gamma_i$ such that
+
+  \[ \val {1-\gamma_i} i < \frac\epsilon {nM}\]
+
+  and
+
+  \[\val {\gamma_i} j < \frac\epsilon{nM} \text { for } i\neq j. \]
+
+  Now set
+
+  \[ \alpha = \sum_i \alpha_i\gamma_i. \]
+
+  Then we have $\val {\alpha-\alpha_i} i < \epsilon$ for all $i$. To see this,
+  assume without loss of generality that $i = 1$. Then
+
+  \[ \alpha - \alpha_1 = \alpha_1(\gamma_1 - 1) + \sum_{i>1}\alpha_i\gamma_i \]
+
+  and, applying $\val \cdot 1$, we get
+
+  \begin{align*}
+    \val {\alpha-\alpha_1} 1 &\leq \val {\alpha_1} 1\val {\gamma_1 - 1} 1 + \left|{\sum_{i>1}\alpha_i\gamma_i}\right|_1\\
+                             &\leq \val {\alpha_1} 1\val {\gamma_1 - 1} 1 + \sum_{i>1}\val {\alpha_i} i\val{\gamma_i}i \\
+                             &\leq \frac \epsilon {nM} \sum_i \val {\alpha_i} 1 \\
+                             &\leq \epsilon.
+  \end{align*}
+
+  by the definition of $\rmm$.
 \end{proof}
 
 \begin{cor}
   \label{eq:corollary}
   If $|\cdot|_i$ are nontrivial and inequivalent, then any identity of the
-  form \[\prod |\alpha|_{i}^{\nu_i} = 1\] with $0\neq \alpha\in k$ implies
+  form \[ P(\alpha) := \prod |\alpha|_{i}^{\nu_i} = 1\] with $0\neq \alpha\in k$ implies
   that the $\nu_i$ are all $0$.
 \end{cor}
+
+\begin{proof}
+  The argument follows quite naturally from our lemmas, which tell us that we can
+  find elements of $k$ with precisely determined valuations at a given set of
+  primes.
+
+  Let $\nu_i\neq 0$. Choosing an $x$ for which $\val x i$ is sufficiently large
+  and the other $\val x j$ for $i\neq j$ are sufficiently close to $1$ gives us
+  the necessary contradiction in the form of an $\alpha$ such that $P(\alpha) >
+  1$.
+\end{proof}
 
 Theorem \ref{eq:corollary} ``precludes the possibility that a finite number of
 valuations can ever be interrelated''. Nevertheless, an infinite number of
@@ -296,12 +337,12 @@ valuations defined on it must either be a number field or a function field.
 
 We will now look at the two axioms of the theorem.
 
-\subsection{The valuation product formula}
-
+\subsection{Axiom 1: the valuation product formula}
+\label{sub:axiom1}
 \begin{axiom}
   \label{eq:axiom1}
-  There is a set $M$ of pairs $(\pp, |\cdot|_\pp)$ such that, for any
-  $0\neq \alpha \in k$,
+  There is a set $\rmm$ of pairs $(\pp, |\cdot|_\pp)$ such that, for any $0\neq
+  \alpha \in k$,
   \begin{itemize}
   \item $\val\alpha\pp = 1$ for almost all $\pp$
   \item Extending the product over all primes,
@@ -311,8 +352,7 @@ We will now look at the two axioms of the theorem.
   \[ \val6{(0)} \cdot\val6{(2)}\cdot\val6{(3)} = 6\cdot 2^{-1} \cdot 3^{-1} =
     1 \]
 \end{axiom}
-
-Notice that, since $\val{1+1}{(\pp)} > 1$ for archimedean $\pp$, $\M$ can only
+Notice that, since $\val{1+1}{(\pp)} > 1$ for archimedean $\pp$, $\rmm$ can only
 contain finitely many archimedean places.
 
 We have mentioned earlier that to any prime $\pp$, we can associate infinitely
@@ -321,7 +361,7 @@ valuation as a distinguished representative of its equivalence class.
 
 \subsection{Id\`eles}
 \label{sec:orgheadline19}
-Consider a set $M$ defined as above. We define a vector space $V_M$, whose
+Consider a set $\rmm$ defined as above. We define a vector space $V_M$, whose
 elements are vectors of the form
 
 \[ v={ (v_\pp) }_\pp, \text{where } v_\pp \in k_\pp. \]
@@ -365,20 +405,24 @@ place. In this sense, id\`eles can be considered ``measurable'' elements of $V_M
   $\pp$, gives a set of vectors with the $\pp$-component given by all $\fC$
   such that
 
-  \[\val \fC\pp \leq \val\fA\pp\]
+  \[\val \fC\pp \leq x_\pp\]
 
   which we call the parallelotope with dimensions $x_\pp$ or even simply $x$. In this
   case, the number $V(\fA)$ can be thought of as the ``volume'' of the
-  parallelotope.
+  parallelotope defined by the coordinates of $x$.
 
   It is later shown that all valuations are either archimedean or discrete (in
-  the sense defined in \textbf{TODO ADD LINK}). If this is true, then for any
-  collection of elements $x_\pp \in \br$, we can find some $\alpha_\pp \in
-  \k_\pp$ with the maximal possible valuation not greater than $x_\pp$. Hence,
-  we can, without loss of generality, start with an id\`ele $\fA$ and construct
-  all vectors $\fC$ satisfying
+  the sense defined in \ref{sec:whatisaplace}). If this is true, then for any
+  collection of elements $x_\pp \in \br$, among all the elements of $k_\pp$,
+  some $\alpha_\pp \in k_\pp$ will have the largest valuation not greater than
+  $x_\pp$.
+
+  Hence, we can, without loss of generality, replace our map $x$ with
+  an id\`ele $\fA$ and construct all vectors $\fC$ satisfying
 
   \[ \val \fC \pp \leq \val \fA \pp \]
+
+  instead.
 
 \end{enumerate}
 
@@ -386,17 +430,18 @@ place. In this sense, id\`eles can be considered ``measurable'' elements of $V_M
 \subsection{The order of a set}
 \label{sec:order}
 
-\cite{artinwhaples} defines a notion of \textit{order},
-stating that it
+\cite{artinwhaples} defines a notion of \textit{order}, stating that it
+
 \begin{quotation}
   [unites] different types of fields\footcite[p. 474]{artinwhaples}
 \end{quotation}
 
 although the definition itself is a a construction I have little motivation for.
-This is mainly to be able to define a notion of ``size'' for the set of elements
-$\alpha \in k$ that are contained in a given $\fA$-parallelotope (where we are
-transparently considering elements of $k$ as elements of $V_M$ using the
-diagonal embedding), which gives us some information about $\fA$.
+The purpose of this is mainly to enable the definition of a notion of ``size''
+for the set of elements $\alpha \in k$ that are contained in a given
+$\fA$-parallelotope (where we are transparently considering elements of $k$ as
+elements of $V_M$ using the diagonal embedding), which gives us some information
+about $\fA$.
 
 \begin{defn}
   Given a ``field of discourse'' $k$, the order $O(S)$ of a set $S$ of elements
@@ -421,47 +466,50 @@ If $k_0$ has $q$ elements, and our set $S$ is closed under addition and under
 $k_0$-multiplication (so it forms a $k_0$-vector space) then $O(S) = q^s$ is
 just the number of elements in $S$.
 
-\subsection{The $M$-function}
-\label{sec:orgheadline17}
+\subsection{The $\rmm$-function}
+\label{subsec:mfunction}
 The order of a set of elements contained in the parallelotope of size $\fA$ will
-be denoted $M(\fA)$.
+be denoted $\rmm(\fA)$.
 
-Note that, for nonzero $\theta\in k$, $M(\theta\fA)=M(\fA)$.
-Indeed, multiplying by $\theta$ changes the parallelotope of size $\fA$ into the
+Note that, for nonzero $\theta\in k$, $\rmm(\theta\fA)=M(\fA)$. This is because
+multiplying by $\theta$ changes the parallelotope of size $\fA$ into the
 parallelotope of size $\theta\fA$. This does not change the order (this can be
 seen by looking at the cases in the definition of order, noting that linear
-independence is not affected if all elements of a subset of a vector space are
+(in)dependence is not affected if all elements of a subset of a vector space are
 multiplied by a field element).
 
 \subsection{The ring of $\pp$-integers}
-\label{sec:orgheadline18}
+\label{subsec:ring-of-integers}
 The set of elements $\alpha\in k$ for which $\val\alpha\pp \leq 1$ forms a
 ring, which we denote $\op$ (the \textit{ring of $\pp$-integers}).
 
-In the case of, say, $k = \bq$, the ring of $(2)$-integers is, as one might
-expect, $\bz_2$ (and so on).
-
+\begin{example}
+  In the case of, say, $k = \bq$, the ring of $(2)$-integers is, as one might
+  expect, $\bz_2$ (and so on).
+\end{example}
 The subset of $\op$ with $\val\alpha\pp < 1$ forms an ideal in this ring, which,
-by abuse of notation, is also denoted $\pp$. Now we have a quotient field
-$\op/\pp$, and so on. The \emph{order} of this field, if finite, is called the
-norm $\Nm\pp$ of $\pp$.
+by abuse of notation, is also denoted $\pp$ (or $\pp\op$). Now we have a
+quotient field $\op/\pp$, and so on. The \emph{order} of this field, if finite,
+is called the norm $\Nm\pp$ of $\pp$.
 
-For instance, if there is a constant field $k_0 \subseteq k^{\pp} = \op/\pp$, we
+For instance, if there is a constant field $k_0 \subseteq k^{\pp} := \op/\pp$, we
 have
 
-\[ \Nm\pp = q^f \]
+\[ \Nm\pp = O(k^\pp) = q^f \]
 
 where we put $f = {[k^\pp : k_0]}$ and $q$ is the order of $k_0$, as before.
 
 \section{Axiom 2}
-\label{sec:orgheadline20}
-The set $M$ of \ref{subsec:axiom1} contains at least one prime $\qq$, which
-is of one of the following types:
-\begin{itemize}
-\item discrete, with a quotient field of finite order $\Nm\qq$
-\item archimedean, with $k_\qq=\br$ or $\bc$
-\end{itemize}
-
+\label{sub:axiom2}
+\begin{axiom}
+  \label{eq:axiom2}
+  The set $\rmm$ of \ref{eq:axiom1} contains at least one prime $\qq$, which is of
+  one of the following types:
+  \begin{itemize}
+  \item discrete, with a quotient field of finite order $\Nm\qq$
+  \item archimedean, with $k_\qq=\br$ or $\bc$
+  \end{itemize}
+\end{axiom}
 Note that, by Ostrowski's theorem, the second part of the condition on
 archimedean places is superfluous.
 
@@ -470,21 +518,27 @@ archimedean places is superfluous.
 For $\alpha\neq 0$, define a valuation as follows:
 \begin{itemize}
 \item For $\pp \not | \infty$ set
-  \[ { ||\alpha|| }_\pp = \frac1{ \Nm\pp^\nu } \]
+  \[ { \left\lVert \alpha \right\rVert }_\pp = { \Nm\pp^{-\nu} } \]
   where $\nu = \val \alpha \pp$.
-\item If $k=\br$, $||\cdot||_\pp$ is defined to be the standard absolute value.
-\item If $k=\bc$, $||\cdot||_\pp$ is set to be the square of the usual absolute
-  value on $\bc$. This is not a valuation in the usual sense!
+\item If $k=\br$, $\left\lVert \cdot \right\rVert_\pp$ is defined to be the standard absolute value.
+\item If $k=\bc$, $\left\lVert \cdot \right\rVert_\pp$ is set to be the square of the usual absolute
+  value on $\bc$. (This is not a valuation in the usual sense!)
 \end{itemize}
 This is called the \textit{normed valuation at $\pp$}.
+
+Note that in the case of $p\in\bz$ prime, the normed valuation corresponding to
+$(p)\in\Spec\bz$ is the usual $p$-adic valuation
+
+\[ \val x p = p^{-\nu_p(x)}. \]
 
 \subsection{Number fields and function fields work}
 We next come to the following theorem, which tells us that number fields and
 function fields satisfy the two axioms stated above:
 
 \begin{thm}
-  We can construct $M$ such that both \ref{eq:axiom1} and
-  \ref{sec:orgheadline20} hold for the following fields:
+  \label{thm:works}
+  We can construct $\rmm$ such that both \ref{eq:axiom1} and \ref{eq:axiom2} hold
+  for the following fields:
   \begin{itemize}
   \item a number field, i.e., a finite extension $K/\bq$
   \item a field of algebraic functions over any field $k_1$ (that is, a finite
@@ -496,41 +550,60 @@ function fields satisfy the two axioms stated above:
 
 The proof of this is done through a sequence of lemmas.
 
-\begin{lemma}
+\begin{lemma}[\ref{eq:axiom1} transfers to subfields]
   Let $k$ be a field for which \ref{eq:axiom1} holds, and $F$ a subfield that
-  does not exclusively comprise constants of $k$. Let $\fn$ be the set of
-  nontrivial divisors (???) $p$ of $F$ that are divisible by some $\pp$ of $\fm$.
-  Then \ref{eq:axiom1} holds in $F$ for $\fn$.
+  does not exclusively comprise constants of $k$. Let $\rn$ be the set of
+  nontrivial divisors $p$ of $F$ that are divisible by some $\pp$ of $\rmm$.
+  Then \ref{eq:axiom1} holds in $F$ for $\rn$.
 \end{lemma}
 
-\begin{lemma}
+\begin{proof}
+  Let $p \in\rn$, and $a\in F$ with $\val a p > 1$. Then $\val a \pp > 1$ for all
+  $\pp|p$.
+
+  Because of \ref{eq:axiom1}, there can only be a finite number of such
+  $\pp|p$. We now define valuations
+
+  \[ \val \alpha p = \prod_{\pp|p} \val \alpha \pp \]
+
+  for $\alpha\in F$, noting that the products are finite and hence well-defined.
+  The set of all such $\val \cdot p$ satisfies \ref{eq:axiom1}.
+\end{proof}
+
+\begin{lemma}[\ref{eq:axiom1} transfers to finite algebraic extensions]
   Let $k$ be a field for which \ref{eq:axiom1} holds and $K/k$ a finite algebraic
-  extension. Let $\fn$ be the set of all divisors $\fp$ of $K$ that divide some
-  $\pp$ of $\fm$. Then \ref{eq:axiom1} holds in $K$ for some subset $\fn' \subset \fn$.
+  extension. Let $\rn$ be the set of all divisors $\fp$ of $K$ that divide some
+  $\pp$ of $\rmm$. Then \ref{eq:axiom1} holds in $K$ for some subset $\rn' \subset \rn$.
 \end{lemma}
 
-In fact, $\fn' = \fn$, but we do not demonstrate this here since it is not
+\begin{proof}
+  Omitted.
+\end{proof}
+
+In fact, $\rn' = \rn$, but we do not demonstrate this here since it is not
 required for the proof (the existence of any set of places satisfying our
 criteria is sufficient).
 
 \begin{lemma}
-  \ref{eq:axiom1} holds in the case of $\bq$ and that of $K=k_1(z)$. The set $\fm$
-  of valuations is the set of all valuations in the case of $\bq$, and the set of
-  valuations trivial on $k_1$ in the latter case. The product formula is of the
-  form
-
-  \[ \prod_p {||a||}_p = 1 \]
-
-  or a power, and there is no other relation between these valuations.
-
+  \ref{eq:axiom1} holds in the case of $\bq$ and that of $K=k_1(z)$ for $k_1$ an
+  arbitrary field.
 \end{lemma}
 
-From the last two lemmas, we see that \ref{eq:axiom1} holds for the fields of
-(??? thm2). The fact that all valuations of $\fm$ satisfy \ref{eq:axiom2}
-follows from the fact that this is true in $\bq$ and hence in a finite extension
-$k/\bq$.
+The set $\rmm$ of valuations is the set of all valuations in the case of
+$\bq$, and the set of valuations trivial on $k_1$ in the latter case. The
+product formula is of the form
 
-It remains to prove the statement about the field $k_0$ of constants.
+\[ \prod_p {\left\lVert a \right\rVert}_p = 1 \]
+
+or a power, and there is no other relation between these valuations.
+
+From the last two lemmas, we see that \ref{eq:axiom1} holds for the fields of
+theorem \ref{thm:maintheorem}. The fact that all valuations of $\rmm$ satisfy
+\ref{eq:axiom2} follows from the fact that this is true in $\bq$ and hence in a
+finite extension $k/\bq$.
+
+It remains to prove the statement about the field $k_0$ of constants in case $2$
+of \ref{thm:works}.
 
 \begin{proof}
   Assume that $p$ is trivial on $k_1$. Then it will also be trivial on any
@@ -542,32 +615,32 @@ It remains to prove the statement about the field $k_0$ of constants.
   algebraic with respect to $k_1(a)$.
 
   Since $k_1(c)$ is in $k_0$, this would mean that $z$ is in $k_0$. This would
-  imply that $k\subseteq k_0$, and $p$ would be trivial on $k$ -- which is a
-  contradiction.
+  imply that $k\subseteq k_0$, and $p$ would be trivial on all of $k$ -- which
+  is a contradiction.
 \end{proof}
 
-\section{Characterizing fields by the product formula}
-\label{sec:orgheadline28}
+% \section{Characterizing fields by the product formula}
+% \label{sec:orgheadline28}
 
-\subsection{(Main) theorem 3}
-\label{sec:orgheadline27}
-If a field satisfies \ref{subsec:axiom1} and \ref{sec:orgheadline20}, it is of one of the two types in \ref{sec:orgheadline25}. Furthermore, \ref{sec:orgheadline20} is satisfied for every place $\pp$.
+% \subsection{(Main) theorem 3}
+% \label{sec:orgheadline27}
+% If a field satisfies \ref{subsec:axiom1} and \ref{sec:orgheadline20}, it is of one of the two types in \ref{sec:orgheadline25}. Furthermore, \ref{sec:orgheadline20} is satisfied for every place $\pp$.
 
-\section{Parallelotopes}
-\label{sec:orgheadline31}
+% \section{Parallelotopes}
+% \label{sec:orgheadline31}
 
-\subsection{Theorem 4}
-\label{sec:orgheadline29}
-There are positive $C, D$ such that for all id\`eles $\fA$ we have
-\[ CV(\fA) < M(\fA) \leq \max(1, DV(\fA)) \]
+% \subsection{Theorem 4}
+% \label{sec:orgheadline29}
+% There are positive $C, D$ such that for all id\`eles $\fA$ we have
+% \[ CV(\fA) < M(\fA) \leq \max(1, DV(\fA)) \]
 
 
-\subsection{Definitions}
-\label{sec:orgheadline30}
-Let $U$ be the multiplicative group of ``absolute units'', that is, $x\in k$ is in $U$ if ${||x||}_\pp = 1$ for all $\pp$.
-\begin{itemize}
-\item If there is a constant field $k_0$, $U=\ut {k_0}$.
-\item ``In case order means number of elements, $U$ must be a finite group since it is contained in the parallelotope of size $1$, so $U$ consists of all roots of unity in $k$.
-\end{itemize}
-Now select a finite set $S$ of primes that contains all the archimedean primes. By $\fA_S$ we mean the id\`eles $\fA$ such that $\vval{ \fA } = 1$ for all $\pp\not\in S$. As one might expect, $e_\pp\in k$ which belong to $\fA_S$ are called $S$-units.
-\end{document}
+% \subsection{Definitions}
+% \label{sec:orgheadline30}
+% Let $U$ be the multiplicative group of ``absolute units'', that is, $x\in k$ is in $U$ if ${\left\lVert x \right\rVert}_\pp = 1$ for all $\pp$.
+% \begin{itemize}
+% \item If there is a constant field $k_0$, $U=\ut {k_0}$.
+% \item ``In case order means number of elements, $U$ must be a finite group since it is contained in the parallelotope of size $1$, so $U$ consists of all roots of unity in $k$.
+% \end{itemize}
+% Now select a finite set $S$ of primes that contains all the archimedean primes. By $\fA_S$ we mean the id\`eles $\fA$ such that $\vval{ \fA } = 1$ for all $\pp\not\in S$. As one might expect, $e_\pp\in k$ which belong to $\fA_S$ are called $S$-units.
+% \end{document}
