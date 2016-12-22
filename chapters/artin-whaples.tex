@@ -462,10 +462,23 @@ about $\fA$.
   \end{enumerate}
 \end{defn}
 
-If $k_0$ has $q$ elements, and our set $S$ is closed under addition and under
-$k_0$-multiplication (so it forms a $k_0$-vector space) then $O(S) = q^s$ is
-just the number of elements in $S$.
+\begin{example}[A special case]
+  Consider the situation of a finite field $k_0$ of constants, and a
+  $k_0$-vector space $S$ (or, according to the original,
+  \begin{quotation}
+    should [...] our set be closed under addition and under multiplication by
+    elements of $k_0$\footcite[p. 474]{artinwhaples}
+  \end{quotation}
+  which implies a \textit{finite-dimensional} vector space structure). Then, by
+  the definition of the order for a finite base field, and noting that there
+  exists a finite basis
 
+  \[ B = \{b_1, \ldots, b_s \}\]
+
+  by assumption (where $s = \dim_{k_0}S$), we find that $O(S) = q^s$ is just
+  the number of elements in $S$.
+
+\end{example}
 \subsection{The $\rmm$-function}
 \label{subsec:mfunction}
 The order of a set of elements contained in the parallelotope of size $\fA$ will
@@ -519,10 +532,13 @@ For $\alpha\neq 0$, define a valuation as follows:
 \begin{itemize}
 \item For $\pp \not | \infty$ set
   \[ { \left\lVert \alpha \right\rVert }_\pp = { \Nm\pp^{-\nu} } \]
-  where $\nu = \val \alpha \pp$.
-\item If $k=\br$, $\left\lVert \cdot \right\rVert_\pp$ is defined to be the standard absolute value.
-\item If $k=\bc$, $\left\lVert \cdot \right\rVert_\pp$ is set to be the square of the usual absolute
-  value on $\bc$. (This is not a valuation in the usual sense!)
+  where $\nu = \val \alpha \pp$. This covers the case of function fields, since
+  all valuations are nonarchimedean in that case.
+\item If $k=\br$, $\left\lVert \cdot \right\rVert_\pp$ is defined to be the
+  standard absolute value.
+\item If $k=\bc$, $\left\lVert \cdot \right\rVert_\pp$ is set to be the square
+  of the usual absolute value on $\bc$. (This is not a valuation in the usual
+  sense!)
 \end{itemize}
 This is called the \textit{normed valuation at $\pp$}.
 
@@ -531,7 +547,7 @@ $(p)\in\Spec\bz$ is the usual $p$-adic valuation
 
 \[ \val x p = p^{-\nu_p(x)}. \]
 
-\subsection{Number fields and function fields work}
+\section{Number fields and function fields work}
 We next come to the following theorem, which tells us that number fields and
 function fields satisfy the two axioms stated above:
 
@@ -559,7 +575,7 @@ The proof of this is done through a sequence of lemmas.
 
 \begin{proof}
   Let $p \in\rn$, and $a\in F$ with $\val a p > 1$. Then $\val a \pp > 1$ for all
-  $\pp|p$.
+  $\pp|p$ (as can be seen by writing $p = \pp p'$).
 
   Because of \ref{eq:axiom1}, there can only be a finite number of such
   $\pp|p$. We now define valuations
@@ -572,8 +588,8 @@ The proof of this is done through a sequence of lemmas.
 
 \begin{lemma}[\ref{eq:axiom1} transfers to finite algebraic extensions]
   Let $k$ be a field for which \ref{eq:axiom1} holds and $K/k$ a finite algebraic
-  extension. Let $\rn$ be the set of all divisors $\fp$ of $K$ that divide some
-  $\pp$ of $\rmm$. Then \ref{eq:axiom1} holds in $K$ for some subset $\rn' \subset \rn$.
+  extension. Let $\rn$ be the set of all divisors $\fN$ of $K$ that divide some
+  $\fM$ of $\rmm$. Then \ref{eq:axiom1} holds in $K$ for some subset $\rn' \subset \rn$.
 \end{lemma}
 
 \begin{proof}
@@ -584,10 +600,172 @@ In fact, $\rn' = \rn$, but we do not demonstrate this here since it is not
 required for the proof (the existence of any set of places satisfying our
 criteria is sufficient).
 
-\begin{lemma}
+\subsection{The product formula exists for $\bq$ and $k(z)$}
+
+We now look at the special case of $K = k_1(z)$. The proof involves some
+interesting interaction between ring-theoretic ideals and valuation theory.
+
+\begin{thm}
+  A product formula of the type referred to in \ref{eq:axiom1} exists for
+  $K=k_1(z)$.
+\end{thm}
+
+\begin{proof}
+  Consider a nontrivial valuation $p$ of $K$ that is trivial on $k_1$. $p$ is
+  nonarchimedean, and there are two possible cases (by Ostrowski's
+  theorem\footcite{kcnrdostrowskift}):
+
+  \begin{enumerate}
+  \item $\val z p \leq 1$. This implies that $\val {f(z)} p \leq 1$ for all
+    polynomials in $z$, as can be seen by writing (omitting the $p$ subscript to
+    simplify the notation):
+
+    \begin{align*}
+      \val {f(z)} &=    \vval {a_nz^n + a_{n-1}z^{n-1} \cdots + a_0} \\
+                  &\leq \max{\left( \vval {a_n} \vval z ^n, \vval {a_{n-1}}\vval z^{n-1}, \ldots, \vval {a_0} \right)} \\
+                  &\leq \max{\left( \vval z ^n, \vval z^{n-1}, \ldots, 1 \right)} \\
+                  &\leq 1.
+    \end{align*}
+
+    Here we use the triviality of $\val \cdot p$ when restricted to $k_1$, and
+    the nonarchimedeanness of the valuation, to bound the valuation above.
+
+    Now let $p(z)$ be a polynomial of the minimal possible
+    degree such that $\val {p(z)} p < 1$ holds. If $g(z)$ is another such
+    polynomial, we use the division algorithm in $k_1(z)$ to get
+
+    \[ g(z) = p(z)h(z) + r(z) \]
+
+    where $\deg r(z) < \deg p(z)$. Rewriting the above relation as
+
+    \[ r(z) = g(z) - p(z)h(z) \]
+
+    gives us $\val {r(z)} p < 1$, which implies $r(z) = 0$.
+
+    Now let $\phi \in K$ be some polynomial in $z$ and write
+
+    \[ \phi(z) = \varphi(z) \cdot p(z)^\nu \]
+
+    where $\varphi$ contains no factors of $p(z)$ in the numerator or denominator
+    (which means that $\nu = \val \phi p$, so the $p(z)^\nu$ factor ``captures''
+    the $p(z)$-term).
+
+    To find the normed valuation ${ \left\lVert \cdot \right\rVert }_p$ in this case,
+    we have to determine the degree of the quotient field $L := k_1(z)/p(z)$ over
+    the base field $K$. We know that
+
+    \[ [L:K] = f := \deg p(z) \]
+
+    so that we have $\Nm p = q^f$ and
+
+    \[ {\left\lVert \phi(z) \right\rVert}_p = q^{-\nu f}. \]
+
+  \item If $\val z p > 1$ then we replace $z$ by $y := 1/z$.
+
+    Then $\val y p < 1$
+    and this reduces to our previous case. Now, the lowest-degree polynomial in
+    $y$ is just $y$, so there is only one such prime divisor $p$ of this kind.
+    We will denote it $p_\infty$.
+
+    Let $\phi(z) = g(z)/h(z)$, and set $m := \deg g(z), n := \deg h(z)$. We then
+    have
+
+    \[ \phi(z) = y^{n-m} \frac {g_1(y)} {h_1(y)} \]
+
+    where neither $g_1$ nor $h_1$ are divisible by $y$. Then
+
+    \[ \nval {\phi(z)} {p_\infty} = q^{m - n}. \]
+  \end{enumerate}
+
+  We can construct a product formula connecting this set of valuations, or a
+  subset, in the form
+
+  \[ \prod_p \nval {\phi(z)} p^{\lambda(p)} = 1 \]
+
+  where the $\lambda(p)$ are nonnegative constants.
+
+  Now we substitute $\phi(z) = p(z)$ with $p(z)$ irreducible. There can only be
+  two possible factors in the product formula that are not equal to $1$: the one
+  corresponding to $p$ itself, and the $p_\infty$ factor at infinity. Writing
+  out the expression (omitting the factors of $1$ corresponding to all the other
+  primes), we have
+
+  \[ q^{f\lambda(p)} q^{-f\lambda(p_\infty)} = 1 \]
+
+  so $\lambda(p) = \lambda(p_\infty)$. Since the choice of $p$ was arbitrary, we
+  conclude that
+
+  \[ \lambda(p_1) = \lambda(p_2) = \cdots = \lambda(p_\infty) \]
+
+  and we may as well set them all equal to $1$. Now we define a volume function
+  $V$ as before on the id\`eles of $k_1(z)$:
+
+  \[ V(\phi(z)) = \prod_p \nval {\phi(z)} p \]
+
+  This is obviously multiplicative and satisfies $V(1/f) = 1/V(f)$.
+
+  The multiplicativity of the $V$-function, together with the observation that
+  $V(p(z)) = 1$ for all irreducible $p(z)$, allows us to conclude the result
+
+  \[ V(\phi(z)) = 1 \]
+
+  for all nonzero $\phi(z)\in k_1(z)$.
+
+\end{proof}
+
+We now treat the case of $\bq$, which is analogous.
+
+\begin{thm}
+  A product formula of the type referred to in \ref{eq:axiom1} exists for $\bq$.
+\end{thm}
+
+\begin{proof}
+  From Ostrowski's theorem, any valuation on $\bq$ is either
+
+  \begin{enumerate}
+  \item the standard absolute value $\vval\cdot = \nval\cdot {p_\infty}$,
+    corresponding to the ``prime at infinity'' $p_\infty$, or
+  \item one of the ordinary $p$-adic valuations $\val\cdot p$ on $\bq$, given by
+
+    \[ \val a p = p^{-\nu} \]
+
+    where $\nu := \nu_p(a)$ is the $p$-valuation of $a$, i.e. the exponent of $p$ in
+    the expression
+
+    \[ a = p^\nu \cdot \frac st \text{ where } p\nmid s, t. \]
+  \end{enumerate}
+
+  We again consider a hypothetical product formula
+
+  \[ \prod_p \nval a p^{\lambda(p)} = 1 \]
+
+  as before, and substitute an irreducible $p \in\bz$ (which is just a prime).
+  This gives us
+
+  \[ p^{-\lambda(p)} \cdot p^{\lambda(p_\infty)} = 1 \]
+
+  and we again have $\lambda(p) = \lambda(p_\infty)$. Again, since we chose $p$
+  arbitrarily, this holds for all primes $p$ and we get
+
+  \[ \lambda(p_1) = \lambda(p_2) = \cdots = \lambda(p_\infty) \]
+
+  where we can again assume $\lambda(p_i) = 1$ for all $i$. We construct a
+  volume function in exactly the same way as before to complete the proof of the
+  product formula for $\bq$.
+
+\end{proof}
+
+Having proven the theorem for the cases $K=\bq$ and $K=k_1(z)$ is sufficient for
+us to conclude the main result, since we can transport our proofs to arbitrary
+finite algebraic extensions of these base fields using the lemmas demonstrated
+previously.
+
+\subsection{Putting it all together}
+
+\begin{thm}
   \ref{eq:axiom1} holds in the case of $\bq$ and that of $K=k_1(z)$ for $k_1$ an
   arbitrary field.
-\end{lemma}
+\end{thm}
 
 The set $\rmm$ of valuations is the set of all valuations in the case of
 $\bq$, and the set of valuations trivial on $k_1$ in the latter case. The
