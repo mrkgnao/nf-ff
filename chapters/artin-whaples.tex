@@ -2,7 +2,7 @@
 \section{Introduction}
 \label{sec:orgheadline1}
 
-A striking piece of evidence in favor of our hypothesis that number fields and
+A striking piece of evidence in favor of the hypothesis that number fields and
 function fields are more similar than one might expect is given by
 \cite{artinwhaples}, which proves the following theorem:
 
@@ -216,8 +216,9 @@ valuation in a set of mutually inequivalent ones.
 
     \[ \lim_{r\to\infty} \frac{\val \gamma n ^r} {\val \gamma n ^r - 1} = 1 \]
 
-    so $\val \alpha n < 1$ since $\val \gamma n > 1$ by hypothesis. Hence this
-    satisfies the conditions of the theorem for $2\leq i \leq n$.
+    (since $\val \gamma n > 1$) so $\val \alpha n < 1$ since $\val \delta n < 1$
+    by hypothesis. Hence this satisfies the conditions of the theorem for $2\leq
+    i \leq n$.
 
     For the case $i = 1$, observe that
 
@@ -341,7 +342,7 @@ We will now look at the two axioms of the theorem.
 \label{sub:axiom1}
 \begin{axiom}
   \label{eq:axiom1}
-  There is a set $\rmm$ of pairs $(\pp, |\cdot|_\pp)$ such that, for any $0\neq
+  There is a set $\rmm$ of pairs $(\pp, |\cdot|_\pp: k\to\br_{>0})$ such that, for any $0\neq
   \alpha \in k$,
   \begin{itemize}
   \item $\val\alpha\pp = 1$ for almost all $\pp$
@@ -491,7 +492,7 @@ seen by looking at the cases in the definition of order, noting that linear
 (in)dependence is not affected if all elements of a subset of a vector space are
 multiplied by a field element).
 
-\subsection{The ring of $\pp$-integers}
+\subsection{The ring of $\pp$-integers, and the norm}
 \label{subsec:ring-of-integers}
 The set of elements $\alpha\in k$ for which $\val\alpha\pp \leq 1$ forms a
 ring, which we denote $\op$ (the \textit{ring of $\pp$-integers}).
@@ -500,6 +501,7 @@ ring, which we denote $\op$ (the \textit{ring of $\pp$-integers}).
   In the case of, say, $k = \bq$, the ring of $(2)$-integers is, as one might
   expect, $\bz_2$ (and so on).
 \end{example}
+
 The subset of $\op$ with $\val\alpha\pp < 1$ forms an ideal in this ring, which,
 by abuse of notation, is also denoted $\pp$ (or $\pp\op$). Now we have a
 quotient field $\op/\pp$, and so on. The \emph{order} of this field, if finite,
@@ -543,7 +545,7 @@ For $\alpha\neq 0$, define a valuation as follows:
 This is called the \textit{normed valuation at $\pp$}.
 
 Note that in the case of $p\in\bz$ prime, the normed valuation corresponding to
-$(p)\in\Spec\bz$ is the usual $p$-adic valuation
+$(p)\in\spec\bz$ is the usual $p$-adic valuation
 
 \[ \val x p = p^{-\nu_p(x)}. \]
 
@@ -606,6 +608,7 @@ We now look at the special case of $K = k_1(z)$. The proof involves some
 interesting interaction between ring-theoretic ideals and valuation theory.
 
 \begin{thm}
+  \label{thm:ffworks}
   A product formula of the type referred to in \ref{eq:axiom1} exists for
   $K=k_1(z)$.
 \end{thm}
@@ -797,28 +800,143 @@ of \ref{thm:works}.
   is a contradiction.
 \end{proof}
 
-% \section{Characterizing fields by the product formula}
-% \label{sec:orgheadline28}
-
-% \subsection{(Main) theorem 3}
-% \label{sec:orgheadline27}
-% If a field satisfies \ref{subsec:axiom1} and \ref{sec:orgheadline20}, it is of one of the two types in \ref{sec:orgheadline25}. Furthermore, \ref{sec:orgheadline20} is satisfied for every place $\pp$.
-
-% \section{Parallelotopes}
-% \label{sec:orgheadline31}
-
-% \subsection{Theorem 4}
-% \label{sec:orgheadline29}
-% There are positive $C, D$ such that for all id\`eles $\fA$ we have
-% \[ CV(\fA) < M(\fA) \leq \max(1, DV(\fA)) \]
 
 
-% \subsection{Definitions}
-% \label{sec:orgheadline30}
-% Let $U$ be the multiplicative group of ``absolute units'', that is, $x\in k$ is in $U$ if ${\left\lVert x \right\rVert}_\pp = 1$ for all $\pp$.
-% \begin{itemize}
-% \item If there is a constant field $k_0$, $U=\ut {k_0}$.
-% \item ``In case order means number of elements, $U$ must be a finite group since it is contained in the parallelotope of size $1$, so $U$ consists of all roots of unity in $k$.
-% \end{itemize}
-% Now select a finite set $S$ of primes that contains all the archimedean primes. By $\fA_S$ we mean the id\`eles $\fA$ such that $\vval{ \fA } = 1$ for all $\pp\not\in S$. As one might expect, $e_\pp\in k$ which belong to $\fA_S$ are called $S$-units.
-% \end{document}
+\section{Characterizing fields by the product formula}
+
+In this section, $k$ is an arbitrary field with a set of valuations $\rmm$
+satisfying axioms \ref{eq:axiom1} and \ref{eq:axiom2}. We will prove that it is
+of one of the two types mentioned before.
+
+\subsection{Definitions}
+
+Consider a prime $\pp$ satisfying Axiom 2. We will need to distinguish $\val
+\alpha \pp$ and $\nval \alpha \pp$ (the normed valuation corresponding to
+$\pp$).
+
+We define $\rho(\pp) > 0$, $\rho(\pp) \in \br$ by writing
+
+\[ \val \alpha \pp = \nval \alpha \pp ^{\rho(\pp)} \]
+
+Let $K$\footnote{The $R$ that the original uses is slightly confusing.} refer to
+the following subfield of $k$:
+
+\begin{enumerate}
+\item If $\rmm$ has archimedean valuations, then $K := \bq$. In this case we set
+  \[ \nval a \pin = |a|, \]
+  the ordinary absolute value on $\br$.
+
+\item In the other case, as we have seen before, $k$ has a field of constants
+  $\koo$. It cannot contain any algebraic extension of $\koo$ since any
+  valuation trivial on $\koo$ would also be trivial on that extension.
+
+  Let $z$ be any element of $k$ not in $\koo$. Then $K = \koz$ is a
+  transcendental extension of $\koo$. We will refer to elements of $\koo[z]$ as
+  the ``integers'' of $\koz$.
+
+  $\inval a$, in this case, will refer to the particular valuation found during
+  the proof of \ref{thm:ffworks} which has $\inval z > 1$.
+\end{enumerate}
+
+In both cases, $\ppn$ is some divisor in $\rmm$ that divides $\pin$. Since the
+product formula, when applied to elements of $K$, reduces to the formula of the
+main theorem (TODO LINK), there must be at least one such $\ppn$ (since all
+other valuations are less than $1$ for $\alpha\in K$, but the product must be
+equal to $1$). The other primes are called \textit{finite}.
+
+For elements $a\in K$, the valuations $\ival\cdot$ and $\inval\cdot$ are
+equivalent. We define $\lambda(\ppn) > 0$ by
+
+\[ \val a \ppn = \nval a p ^{\lambda(\ppn)} \]
+
+\begin{lemma}
+  Let
+  \begin{itemize}
+  \item $\qq$ be a prime satisfying \ref{eq:axiom2}
+  \item $\rs$ be a set of elements of $k$, with order $M>1$
+  \item $x$ be an upper bound on $\qq$-valuations for elements of $\rs$, that is,
+    \[ \val\alpha\qq \leq x \text{ for all } \alpha\in\rs \]
+  \end{itemize}
+  Then there exists an element $\theta\in k$ with the following properties:
+  \begin{itemize}
+  \item $\theta\neq 0$
+  \item $\theta$ is either a difference of two elements of $\rs$, or, if there
+    is a field of constants $\koo$, a $\koo$-linear combination of elements of $\rs$
+  \item For some constant $A_\qq$ (depending only on $\qq$),
+    \[ \val\theta\qq \leq A_\qq \cdot \frac x{M^{\rho(\qq)}} \]
+  \end{itemize}
+\end{lemma}
+
+\begin{proof}
+  There are three cases to consider.
+  \begin{itemize}
+  \item $\qq$ archimedean, $k_\qq$ real. We can embed $k$ into $\br$ in this
+    case. We have
+
+    \[ \nval \alpha \qq \leq x^{1/\rho(\qq)} \]
+
+  \end{itemize}
+\end{proof}
+
+\begin{lemma}
+  Let $M$ be the order of the set of elements $\alpha\in k$ contained in a
+  parallelotope of dimensions $x_\pp$. If $\qq$ is a prime satisfying
+  \ref{eq:axiom2} we can find some $B_\qq$ depending on $\qq$ such that either $M =
+  1$ (which happens if the set only contains $\alpha=0$), or
+
+  \[ M \leq B_\qq  \left( \prod_\pp x_\pp \right) ^{1/\rho(\qq)} \]
+\end{lemma}
+
+\begin{proof}
+  Omitted.
+\end{proof}
+
+\begin{lemma}
+  If $\alpha_1,\alpha_2,\ldots,\alpha_l\in k$ are linearly independent over $K$,
+  and if $y$ is some nonzero integer of $K$, we can construct a certain set $\rs$
+  of elements $\alpha$ such that
+
+  \begin{itemize}
+  \item $\val\alpha\pp\leq a_\pp = \max\left( \val{\alpha_1}\pp,\val{\alpha_2}\pp,\ldots,\val{\alpha_l}\pp\right)$
+  \item $\val\alpha\ppn \leq B\cdot\val y\ppn$ for a certain constant $B$.
+  \item If there is a field of constants $\koo$, then $\rs$ is a $\koo$-vector space.
+  \item The order of $\rs$ satisfies
+    \[ O({\rs}) > \inval y ^l \]
+  \end{itemize}
+\end{lemma}
+\begin{proof}
+  Omitted.
+\end{proof}
+
+\begin{lemma}
+  The degree $n := [k:K]$ is finite; every $\pp$ of $M$ satisfies
+  \ref{eq:axiom2}, and we have
+
+  \[ n \leq \frac1{\rho(\pp)} \cdot \sum_{\ppn}\lambda(\ppn) \]
+
+  for all $\pp$\footnote{The original writes $p$ here.}.
+\end{lemma}
+\begin{proof}
+  Omitted.
+\end{proof}
+
+With this, we have completed the proof of the following result:
+
+\begin{thm}
+ If $k$ is a field that satisfies \ref{eq:axiom1} and \ref{eq:axiom2}, it is an
+ extension of either
+ \begin{itemize}
+ \item $K = \bq$, the field of rational numbers, or
+ \item $K = \koz$, the field of rational functions in one variable $z$ over the
+   field of constants $\koo$ of $k$
+ \end{itemize}
+ of finite degree $n$.
+
+ $\rmm$ consists of all extensions of the standard valuations on $K$ (which we
+ know from Ostrowski's theorem). We can, after raising all the valuations in the
+ product formula to some fixed power, assume they are normed. We have
+
+ \[ \sum_{\pp|p}n(\pp) = n \]
+
+ for all $p\in K$.
+\end{thm}

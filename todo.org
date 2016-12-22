@@ -1,2 +1,6 @@
 * DONE Backlink to definition of archimedean and discrete primes
   CLOSED: [2016-12-21 Wed 19:44]
+* suggestion for definition 3, change R to R>=0, and remove property 2 because I originally thought Im meant imaginary component
+* s/Q/number field defn 5
+* product formula 2.4.1 -> 2.4
+* M infinite
