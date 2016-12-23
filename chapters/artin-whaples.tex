@@ -13,8 +13,8 @@ function fields are more similar than one might expect is given by
   function field.
 \end{thm}
 
-We will follow the proof of one direction of the theorem, setting out the two
-axioms and showing that number fields and function fields satisfy them.
+We will follow the proof of the theorem, setting out the two axioms and showing
+that number fields and function fields satisfy them.
 
 \section{Places and valuations}
 \label{sec:orgheadline6}
@@ -849,7 +849,12 @@ equivalent. We define $\lambda(\ppn) > 0$ by
 
 \[ \val a \ppn = \nval a p ^{\lambda(\ppn)} \]
 
+The idea behind the proof is to show that $k$ is a finite extension of $K$.
+
+\subsection{The proof}
+
 \begin{lemma}
+  \label{thm:thetaexists}
   Let
   \begin{itemize}
   \item $\qq$ be a prime satisfying \ref{eq:axiom2}
@@ -868,27 +873,53 @@ equivalent. We define $\lambda(\ppn) > 0$ by
 \end{lemma}
 
 \begin{proof}
-  There are three cases to consider.
-  \begin{itemize}
-  \item $\qq$ archimedean, $k_\qq$ real. We can embed $k$ into $\br$ in this
-    case. We have
+  Omitted.
+  % There are three cases to consider.
+  % \begin{itemize}
+  % \item $\qq$ archimedean, $k_\qq$ real. We can embed $k$ into $\br$ in this
+  %   case. We have
 
-    \[ \nval \alpha \qq \leq x^{1/\rho(\qq)} \]
+  %   \[ \nval \alpha \qq \leq x^{1/\rho(\qq)} \]
 
-  \end{itemize}
+  % \end{itemize}
 \end{proof}
 
 \begin{lemma}
   Let $M$ be the order of the set of elements $\alpha\in k$ contained in a
   parallelotope of dimensions $x_\pp$. If $\qq$ is a prime satisfying
-  \ref{eq:axiom2} we can find some $B_\qq$ depending on $\qq$ such that either $M =
-  1$ (which happens if the set only contains $\alpha=0$), or
+  \ref{eq:axiom2}, we can find some $B_\qq$ depending on $\qq$ such that either
+  $M = 1$ (which happens if the set only contains $\alpha=0$), or
 
-  \[ M \leq B_\qq  \left( \prod_\pp x_\pp \right) ^{1/\rho(\qq)} \]
+  \[ M \leq B_\qq  {\left( \prod_\pp x_\pp \right)} ^{1/\rho(\qq)} \]
 \end{lemma}
 
 \begin{proof}
-  Omitted.
+  Assume $M>1$. Note that the $\qq$-component of the id\`ele $x$ is an upper
+  bound on $\qq$-valuations, so by \ref{thm:thetaexists}, there is a $\theta\neq
+  0$ satisfying
+
+  \[ \val\theta\qq \leq A_\qq \cdot \frac {x_\pp}{M^{\rho(\qq)}} \]
+
+  For the other $\pp\in\rmm$ we estimate $\theta$ to get
+
+  \[
+    \val\theta\pp \leq
+    \begin{cases}
+      x_\pp, &\pp \text{ nonarchimedean}\\
+      4^{\rho_(\pp)}\cdot x_\pp, &\pp \text{ archimedean}
+    \end{cases}
+  \]
+
+  Substituting into the product formula, we get
+
+  \[ 1\leq \frac{D_\qq \prod_\pp x_\pp}{M^{\rho(\qq)}} \]
+
+  and rearranging gives
+
+  \[ M \leq { D_\qq^{1/\rho(\qq)} } \cdot {\left( \prod_\pp x_\pp \right)}^{1/\rho(\qq)} \]
+
+  and we are done.
+
 \end{proof}
 
 \begin{lemma}
@@ -923,20 +954,20 @@ equivalent. We define $\lambda(\ppn) > 0$ by
 With this, we have completed the proof of the following result:
 
 \begin{thm}
- If $k$ is a field that satisfies \ref{eq:axiom1} and \ref{eq:axiom2}, it is an
- extension of either
- \begin{itemize}
- \item $K = \bq$, the field of rational numbers, or
- \item $K = \koz$, the field of rational functions in one variable $z$ over the
-   field of constants $\koo$ of $k$
- \end{itemize}
- of finite degree $n$.
+  If $k$ is a field that satisfies \ref{eq:axiom1} and \ref{eq:axiom2}, it is an
+  extension of either
+  \begin{itemize}
+  \item $K = \bq$, the field of rational numbers, or
+  \item $K = \koz$, the field of rational functions in one variable $z$ over the
+    field of constants $\koo$ of $k$
+  \end{itemize}
+  of finite degree $n$.
 
- $\rmm$ consists of all extensions of the standard valuations on $K$ (which we
- know from Ostrowski's theorem). We can, after raising all the valuations in the
- product formula to some fixed power, assume they are normed. We have
+  $\rmm$ consists of all extensions of the standard valuations on $K$ (which we
+  know from Ostrowski's theorem). We can, after raising all the valuations in the
+  product formula to some fixed power, assume they are normed. We have
 
- \[ \sum_{\pp|p}n(\pp) = n \]
+  \[ \sum_{\pp|p}n(\pp) = n \]
 
- for all $p\in K$.
+  for all $p\in K$.
 \end{thm}

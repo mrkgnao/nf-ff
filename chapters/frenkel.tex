@@ -37,7 +37,7 @@ where $[n]\in\znz$ acts as the $n$-th power map. This can be seen by noticing
 that the action of an element $\sigma$ of the Galois group on the field is completely
 determined by where it sends $\zeta_n$.
 
-\section{Class field theory}
+\section{Absolute Galois groups}
 
 \subsection{Abelian extensions}
 
@@ -56,8 +56,17 @@ which function fields are the other main example).
   $\Gal(K/\bq)$ abelian.
 \end{defn}
 
-For instance, extensions like $\bq(i)$ are manifestly abelian. (TODO add
-examples and nonexamples)
+For instance, extensions like $\bq(i)$ are manifestly abelian (the Galois group
+is $\zmod 2$ in this case).
+
+\begin{defn}
+  The \textit{maximal abelian extension} of a field is the largest extension
+  that has an abelian Galois group.
+\end{defn}
+
+One of the crowning achievements of algebraic number theory is the following
+result, which shows us that $\qab$ can be understood in terms of ``simple''
+extensions of $\bq$.
 
 \begin{thm}[Kronecker-Weber]
   The maximal abelian extension $\qab$ of $\bq$ satisfies
@@ -69,9 +78,9 @@ examples and nonexamples)
 \subsection{A first look at $\agqab$}
 
 The Galois group of the maximal abelian extension, $\agqab$, is in fact the
-abelianization of the absolute Galois group $\galq$ of $\bq$.\footnote{This
-  holds for any field. (nice enough?)} The
-Kronecker-Weber theorem allows us to apply $\gal - \bq$ to get the following
+abelianization of the absolute Galois group $\galq$ of $\bq$.
+% \footnote{This holds for any field. (nice enough?)}
+The Kronecker-Weber theorem allows us to apply $\gal - \bq$ to get the following
 first description of the abelianized Galois group of $\bq$, noting that the
 union operation is the colimit in the category of sets, and contravariant
 functors like $\Gal(-/\bq)$ ``turn the arrows around'':
@@ -80,14 +89,14 @@ functors like $\Gal(-/\bq)$ ``turn the arrows around'':
 
 Here the limit is taken with respect to the system of surjections
 
-\[ \dr {\pi_ n^m} {\znzt} {\zmzt} \text{for all } m|n \]
+\[ \dr {\pi_ n^m} {\znzt} {\zmzt} \text{ for all } m|n \]
 
 that sends, for instance, $[5]\in{\zmod 6}$ to $[1]\in\zmod 3$. This can be
 thought of as ``throwing away'' the information carried by the other factors
 (which is just $2$ in this case).
 
 What does an element of $\agqab$ look like? By the definition of the inverse
-limit of a filtered set (TODO check this), an element of $\agqab$ is a collection of
+limit of a filtered set, an element of $\agqab$ is a collection of
 elements
 
 \[ \alpha_n \in \znz \]
@@ -97,8 +106,44 @@ compatible with the $\pi_m^n$, where by
 
 \[ m|n \implies \pi_n^m(\alpha_m) = \alpha_n. \]
 
+\subsection{$p$-adics}
+We briefly outline the construction of the $p$-adic fields $\qp$.
+
+Consider the rings $\zmod {p^n}$. In a way similar to what was done above (in
+fact, this is a special case), we can define projections
+
+\[ \dr {\pi_ s^t} {\zmod {p^s}} {\zmod {p^t}} \text{ for all } m|n \]
+
+We can then construct the inverse limit:
+
+\[ \bz_p = \varprojlim_r \zmod {p^r} \]
+
+There is an embedding $\bz\hookrightarrow\bz_p$, by ``taking successive
+remainders'': define the sequence
+
+\[ t_n = t \Mod{p^n} \]
+
+Then each such sequence $s(t) = (t_1, t_2, \cdots)$ is a $p$-adic integer.
+
+\begin{example}
+  $35$ embeds\footcite{Wikipedia} into $\bz_2$ as the sequence
+
+  \[  (1, 3, 3, 3, 3, 35, 35, 35, \ldots)\]
+
+  which, like all $p$-adics derived from $\bz$, eventually ``stabilizes'' when
+  the modulus becomes large enough.
+\end{example}
+
+We then define
+
+\[ \qp = \rm{Frac}(\zp) \]
+
+which we can do since $\zp$ is an integral domain.
+
+Algebraic number theory books treat this construction in more detail. For
+instance, chapter II of \cite{neukirch} is an excellent reference.
+
 \subsection{Describing $\agqab$ with $p$-adics}
-(fill in defns of $\zp$ and $\qp$ later)
 
 We have the following classical result:
 
@@ -132,30 +177,28 @@ that
 
 \[ \galqab \cong \prod_p \zpt. \]
 
-\section{Class field theory}
-The obvious next step is, given a number field $F/\bq$, to try to ``upgrade''
-the Kronecker-Weber theorem and describe its maximal abelian extension $\ab F$.
+% \section{Class field theory}
+% The obvious next step is, given a number field $F/\bq$, to try to ``upgrade''
+% the Kronecker-Weber theorem and describe its maximal abelian extension $\ab F$.
 
-No such analog is known. However, we do have a description of $\galfab$, the
-abelianized Galois group of $F$, via class field theory.
+% No such analog is known. However, we do have a description of $\galfab$, the
+% abelianized Galois group of $F$, via class field theory.
 
-\subsection{Adeles and ideles}
-\label{sec:adeles-ideles}
+\subsection{Ad\`eles }
+\label{sec:ad\`eles}
 
-\subsubsection{The special case of $F=\bq$}
-
-Define the ring of \textit{integral adeles}
+Define the ring of \textit{integral ad\`eles}
 
 \[ \adz = \br \times \zhat \]
 
-and the ring of \textit{adeles} as
+and the ring of \textit{ad\`eles} as
 
 \[ \adq = \adz \otimes_\bz \bq. \]
 
 We can put a topology on this: let $\zhat$ have the product topology inherited
 from the $\zp$, give $\bq$ the discrete topology, and let $\br$ have its usual
 topology. This makes $\adq$ a topological ring, with a diagonal embedding
-$\bq\to\adq$. There is a similar embedding $\qt \to \adqt$.
+$\bq\hookrightarrow\adq$. There is a similar embedding $\qt \hookrightarrow \adqt$.
 
 Notice that the quotient
 
@@ -173,6 +216,9 @@ $\adqt/\qt$. With the previous statement, we see that
 
 Since $\rgt$ is very connected, the group of connected components is isomorphic
 to $\prod_p \zpt$, thus verifying the Kronecker-Weber theorem.
+
+Ad\`eles are related to \textit{id\`eles}, which are a multiplicative analogue that
+we make use of in the next chapter.
 
 % \subsubsection{More general settings}
 
