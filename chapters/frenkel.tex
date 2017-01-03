@@ -33,7 +33,7 @@ fields $\phi: K/k \to L/k$, we have a commutative diagram
 Recall that the field of \textit{cyclotomic numbers}, $\qzetn$, has Galois
 group
 \[\Gal(\qzetn/\bq) \cong \znzt \]
-where $[n]\in\znz$ acts as the $n$-th power map. This can be seen by noticing
+where $[k]\in\znz$ acts as the $k$-th power map. This can be seen by noticing
 that the action of an element $\sigma$ of the Galois group on the field is completely
 determined by where it sends $\zeta_n$.
 
@@ -77,12 +77,12 @@ extensions of $\bq$.
 
 \subsection{A first look at $\agqab$}
 
-The Galois group of the maximal abelian extension, $\agqab$, is in fact the
+The Galois group of the maximal abelian extension, $\agqab$, is the
 abelianization of the absolute Galois group $\galq$ of $\bq$.
 % \footnote{This holds for any field. (nice enough?)}
 The Kronecker-Weber theorem allows us to apply $\gal - \bq$ to get the following
 first description of the abelianized Galois group of $\bq$, noting that the
-union operation is the colimit in the category of sets, and contravariant
+union operation is the colimit in the category of fields, and contravariant
 functors like $\Gal(-/\bq)$ ``turn the arrows around'':
 
 \[ \agqab := \galqab \cong \varprojlim_n \znzt \]
@@ -91,7 +91,7 @@ Here the limit is taken with respect to the system of surjections
 
 \[ \dr {\pi_ n^m} {\znzt} {\zmzt} \text{ for all } m|n \]
 
-that sends, for instance, $[5]\in{\zmod 6}$ to $[1]\in\zmod 3$. This can be
+that sends, for instance, $[5]\in{\zmod 6}$ to $[2]\in\zmod 3$. This can be
 thought of as ``throwing away'' the information carried by the other factors
 (which is just $2$ in this case).
 
@@ -104,7 +104,7 @@ elements
 compatible with the $\pi_m^n$, where by
 \textit{compatibility} we mean that
 
-\[ m|n \implies \pi_n^m(\alpha_m) = \alpha_n. \]
+\[ m|n \implies \pi_n^m(\alpha_n) = \alpha_m. \]
 
 \subsection{$p$-adics}
 We briefly outline the construction of the $p$-adic fields $\qp$.
@@ -112,7 +112,7 @@ We briefly outline the construction of the $p$-adic fields $\qp$.
 Consider the rings $\zmod {p^n}$. In a way similar to what was done above (in
 fact, this is a special case), we can define projections
 
-\[ \dr {\pi_ s^t} {\zmod {p^s}} {\zmod {p^t}} \text{ for all } m|n \]
+\[ \dr {\kappa_ s^t} {\zmod {p^s}} {\zmod {p^t}} \text{ for all } s \ge t \]
 
 We can then construct the inverse limit:
 
@@ -185,7 +185,7 @@ that
 % abelianized Galois group of $F$, via class field theory.
 
 \subsection{Ad\`eles }
-\label{sec:ad\`eles}
+\label{sec:adeles}
 
 Define the ring of \textit{integral ad\`eles}
 

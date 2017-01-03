@@ -1,0 +1,102 @@
+#+TODO: TODO TENTATIVE | DONE
+
+* DONE Cyclotomic fields: [n] in Z/nZ acts as the n-th power map
+  CLOSED: [2017-01-03 Tue 01:00]
+
+* DONE Be more specific about “nice” field
+  CLOSED: [2017-01-03 Tue 01:01]
+
+* TENTATIVE Maximal abelian extension: largest algebraic extension?
+
+* TENTATIVE \Gamma^ab: “is in fact”
+
+* DONE Union operation: shouldn’t that be in the category of fields?
+  CLOSED: [2017-01-03 Tue 01:03]
+
+* DONE Shouldn’t [5] map to [2]?
+  CLOSED: [2017-01-03 Tue 01:03]
+
+* DONE You’ve mixed up your indices in $\pi_n^m(\alpha_m) = \alpha_n$.
+  CLOSED: [2017-01-03 Tue 01:04]
+
+* DONE Should be s \ge t not m|n in definition of p-power projection map.  Call it a different name than \pi?
+  CLOSED: [2017-01-03 Tue 01:05]
+
+* DONE Define your notation $\vu_p(n)$.
+  CLOSED: [2017-01-03 Tue 01:32]
+
+* TODO It might make sense to have a separate section doing projective limits, since the discussion is currently a bit scattered.
+
+* TODO Remark on why product commutes with limits.
+
+* TODO Could give this interpretation of the Kronecker-Weber theorem right after the theorem, if you create a section for projective limits.
+
+* TODO You should describe the topology on $Z_p$ (could do it in the section on projective limits).  Note that the definition of this profinite topology is basically the same for $\hat{Z}$ and $Z_p$.  If you do add a discussion of the topology, you could give an argument for why any profinite group is compact, though I think it’s also fine to leave this claim as an assertion.
+
+* TODO Definition 4: Image should be in $R^{\ge 0}$.  Nonarchimedean should be 4’ rather than 3’.
+
+* DONE Better to say “topologies” rather than “topological space structures.”  For example, “Each metric induces a topology on the field.”
+  CLOSED: [2017-01-03 Tue 01:07]
+
+* DONE Your definition 6 is not symmetric (and thus not an equivalence relation) since you require $c \in (0,1)$.  It should be $c>0$.
+  CLOSED: [2017-01-03 Tue 01:08]
+
+* DONE In the discussion after Definition 6, note that Q has no complex places.  Might be better to state the result for number fields, and note that embeddings of number fields into R or C correspond to real and complex roots of a defining polynomial.
+  CLOSED: [2017-01-03 Tue 01:10]
+
+* DONE Statement of Lemma 1 should include nontrivial if you’re going to include it in Lemma 2.
+  CLOSED: [2017-01-03 Tue 01:10]
+
+* DONE Proof of Lemma 1, it wasn’t clear to me why $\alpha$ and $\beta$ existed until I took a look at Neukirch.  You might want to just add a short remark that $|x| < 1$ is equivalent to the powers of $x$ converging to $0$, which clearly ties into the topology.
+  CLOSED: [2017-01-03 Tue 01:29]
+
+* DONE A footnote (4) in the middle of a displayed equation is kind of confusing.  Maybe move it to some adjacent text.
+  CLOSED: [2017-01-03 Tue 01:29]
+
+
+* DONE At the end of the proof of Theorem 6, your font for M is wrong; just use $M$.
+  CLOSED: [2017-01-03 Tue 01:15]
+
+* DONE For Corollary 1, need to assume that the number of valuations is finite (the conclusion is false if you take a product over all places).  You make this remark afterward, but I think you should include the assumption in the corollary.
+  CLOSED: [2017-01-03 Tue 01:15]
+
+* TODO In the definition of ideles, I don’t know if you want to emphasize the fact that this is a vector space.  It is, over the field k, but the components don’t correspond to places so it’s a little confusing.
+
+* DONE Typo after Definition 8: “order of a set is its the number”.
+  CLOSED: [2017-01-03 Tue 01:20]
+
+* TODO In 2(b) probably want to say the maximal number of elements.
+
+* DONE In Example 2, why does the stated assumption imply finite dimensionality?
+  CLOSED: [2017-01-03 Tue 01:18]
+
+* TODO You’re using the same M to represent the function in 2.5.2 and the set of places in Axiom 1.
+
+* TODO For example 3, note that your definition of 2-integers gives the localization of Z at (2), not the 2-adics. The 2-adics aren’t contained inside Q, whereas your definition of the ring of 2-integers is.
+
+* DONE In proof of Theorem 8, it should be the division algorithm in k_1[z] not k_1(z).
+  CLOSED: [2017-01-03 Tue 01:19]
+
+* TODO Are you assuming that $\phi \in K$ or that $\phi \in k_1[z]$?  Elements of $K$ aren’t all polynomials.  In general, you’re mixing up polynomials and rational functions in this proof.
+
+* DONE You define L as k_1(z)/p(z); it should be a quotient of the ring k_1[z].  Also, you haven’t shown that p(z) is irreducible (and thus that L is a field).
+  CLOSED: [2017-01-03 Tue 01:29]
+
+* DONE he end of section 2.7.2, what is c?
+  CLOSED: [2017-01-03 Tue 01:29]
+
+* DONE You left in TODO LINK.
+  CLOSED: [2017-01-03 Tue 01:23]
+
+* DONE In the statement of Lemma 7, you should emphasize that the choice of B_q is made before the x_p and then the identity holds for all parallelotopes.
+  CLOSED: [2017-01-03 Tue 01:23]
+
+* DONE In Lemma 8, I think you’re defining a_p, so use the := notation.
+  CLOSED: [2017-01-03 Tue 01:24]
+
+* DONE In the statement of Lemma 9, haven’t you already assumed that M is a set of places satisfying Axioms 1 and 2 (if so, you’re using the wrong font for M)?  Otherwise, what do you mean by claiming that every p in M satisfies Axiom 2?  I don’t know what other set M of primes you’ve defined.
+  CLOSED: [2017-01-03 Tue 01:27]
+
+* TODO It’s fine to omit proofs of the lemmas, but I think you should explain how they fit together to give a proof of Theorem 11.
+
+* TODO You don't really define the following terminology: discrete, divisor, divisibility of places (especially in the Archimedean case), field of constants (presumably the elements where all valuations in M are trivial?).

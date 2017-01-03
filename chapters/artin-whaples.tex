@@ -42,7 +42,7 @@ on) are abstracted by the following definition:
   1]{artinwhaples}
   \begin{enumerate}
   \item $|\alpha| = 0 \iff \alpha = 0$
-  \item $\im |\cdot|\subset \rgt$
+  \item $\im |\cdot|\subset {\br}^{\geq 0}$
   \item $|\alpha\beta| = |\alpha||\beta|$
   \item $|\alpha + \beta| \leq |\alpha| + |\beta|$
   \end{enumerate}
@@ -52,7 +52,7 @@ If a valuation satisfies the following, it is called \textit{nonarchimedean}
 (and \textit{archimedean} otherwise):
 
 \begin{enumerate}
-\item[3'] $|\alpha + \beta| \leq \max(|\alpha|,|\beta|)$
+\item[4'] $|\alpha + \beta| \leq \max(|\alpha|,|\beta|)$
 \end{enumerate}
 
 \subsection{Motivation for places}
@@ -91,8 +91,8 @@ way to do it is by noticing the following:
   Every valuation on a field induces a metric on it.
 \end{thm}
 
-A metric defines a metric space structure, and hence a topological space
-structure, on the field. We can now say that
+A metric defines a metric space structure, and hence a topology, on the field.
+We can now say that
 
 \begin{defn}
   Two valuations $\val \cdot 1$ and $\val\cdot2$ are \textit{equivalent} if
@@ -101,7 +101,7 @@ structure, on the field. We can now say that
 
 Another way to do it is as follows: first, notice that raising an absolute value
 to any power less than $1$ gives rise to another absolute value. We can, hence,
-define two absolute values to be equivalent if there is some power $c\in(0,1)$
+define two absolute values to be equivalent if there is some power $c > 0$
 for which \[|\cdot|_1 = |\cdot|_2^c\].
 
 These two definitions of \textit{equivalent} are actually equivalent!
@@ -111,14 +111,16 @@ These two definitions of \textit{equivalent} are actually equivalent!
   a \textit{place} for short.
 \end{defn}
 
-The (nontrivial) places of $\bq$ can be classified as follows:
+The (nontrivial) places of any number field $K=\bq(\alpha)$ can be classified as follows:
 
 \begin{itemize}
-\item the nonarchimedean ones, which correspond to $p$-adic valuations and hence
-  to prime ideals $(p)$ in the ring of integers $\bz$ of $\bq$ (and thus to the
-  $p$-adic fields arising as completions of $\bq$ under these valuations)
-\item the archimedean ones, which correspond to embeddings of $\bq$ into $\br$
-  or $\bc$ (``real'' and ``complex'' embeddings)
+\item the nonarchimedean ones, which correspond to $\pp$-adic valuations and hence
+  to prime ideals $\pp$ in the ring of integers $\ok$ of $K$ (and thus to the
+  fields arising as completions of $K$ under these valuations)
+\item the archimedean ones, which correspond to embeddings of $K$ into $\br$
+  or $\bc$ (``real'' and ``complex'' embeddings) and hence to real roots, or
+  pairs of complex conjugate roots, of the polynomial defining the primitive
+  root $\alpha$
 \end{itemize}
 
 In general, a field may have many archimedean places, corresponding to different
@@ -134,7 +136,7 @@ lemmas (the proofs are somewhat ``analytic'' in nature and might be skipped on a
 first reading), culminating in a very useful approximation theorem.
 
 \begin{lemma}
-  If $|\cdot|_1$ and $|\cdot|_2$ are two inequivalent valuations, there is
+  If $|\cdot|_1$ and $|\cdot|_2$ are two nontrivial inequivalent valuations, there is
   some $\gamma$ such that \[|\gamma|_1 < 1 \text{ and } |\gamma|_2 > 1.\]
 \end{lemma}
 
@@ -146,6 +148,9 @@ first reading), culminating in a very useful approximation theorem.
     \val \alpha 1 &<    1 \leq \val \alpha 2 \\
     \val \beta 1  &\geq 1 >    \val \beta 2
   \end{align*}
+
+  since $|x|<1$ if and only if powers of $x$ converge to $0$ in the topology
+  defined by the absolute value $|\cdot|$.
 
   We can then set $\gamma = \alpha/\beta$.
 \end{proof}
@@ -251,11 +256,11 @@ valuation in a set of mutually inequivalent ones.
   Then
 
   \[ \val {\alpha - 1} 1 = \frac 1 {\val {1 + \gamma^r} 1} \leq \frac 1 {\val
-      \gamma 1 ^r}\footnote{The $\val \cdot 1$ in the denominator is just a
-      $|\cdot|$ in the original paper, which I suspect is a typo since $|\cdot|$
-      hasn't been defined to mean anything at this point.} \leq \epsilon \]
+      \gamma 1 ^r}\leq \epsilon \]
 
-  for $r$ sufficiently large, while, for $i>1$, we have
+  for $r$ sufficiently large\footnote{The $\val \cdot 1$ in the denominator is just a
+    $|\cdot|$ in the original paper, which I suspect is a typo since $|\cdot|$
+    hasn't been defined to mean anything at this point.}, while, for $i>1$, we have
 
   \[ \val \alpha i = \frac {\val \gamma i ^r} {\val {1 + \gamma^r} i} \leq \frac
     {\val \gamma i ^r} {1 - \val \gamma i ^r} \leq \epsilon \]
@@ -303,14 +308,15 @@ valuation in a set of mutually inequivalent ones.
                              &\leq \epsilon.
   \end{align*}
 
-  by the definition of $\rmm$.
+  by the definition of $M$.
 \end{proof}
 
 \begin{cor}
   \label{eq:corollary}
-  If $|\cdot|_i$ are nontrivial and inequivalent, then any identity of the
-  form \[ P(\alpha) := \prod |\alpha|_{i}^{\nu_i} = 1\] with $0\neq \alpha\in k$ implies
-  that the $\nu_i$ are all $0$.
+  If a finite number of valuations $|\cdot|_i$ are all nontrivial and pairwise
+  inequivalent, then any identity of the form \[ P(\alpha) := \prod
+    |\alpha|_{i}^{\nu_i} = 1\] with $0\neq \alpha\in k$ implies that the $\nu_i$
+  are all $0$.
 \end{cor}
 
 \begin{proof}
@@ -448,7 +454,7 @@ about $\fA$.
   Given a ``field of discourse'' $k$, the order $O(S)$ of a set $S$ of elements
   is defined as follows:
   \begin{enumerate}
-  \item If $k$ has an archimedean valuation, then the order of a set is its the
+  \item If $k$ has an archimedean valuation, then the order of a set is the
     number of elements.
   \item If all the valuations of $k$ are nonarchimedean, there is some field of
     constants $k_0 \subset k$. (For instance, if $k = \bff_q(\sqrt t)$, $k_0 =
@@ -465,12 +471,12 @@ about $\fA$.
 
 \begin{example}[A special case]
   Consider the situation of a finite field $k_0$ of constants, and a
-  $k_0$-vector space $S$ (or, according to the original,
+  set $S$ that satisfies the condition in the original:
   \begin{quotation}
     should [...] our set be closed under addition and under multiplication by
     elements of $k_0$\footcite[p. 474]{artinwhaples}
   \end{quotation}
-  which implies a \textit{finite-dimensional} vector space structure). Then, by
+  which implies a $k_0$-vector space structure. Then, by
   the definition of the order for a finite base field, and noting that there
   exists a finite basis
 
@@ -635,7 +641,7 @@ interesting interaction between ring-theoretic ideals and valuation theory.
 
     Now let $p(z)$ be a polynomial of the minimal possible
     degree such that $\val {p(z)} p < 1$ holds. If $g(z)$ is another such
-    polynomial, we use the division algorithm in $k_1(z)$ to get
+    polynomial, we use the division algorithm in $k_1[z]$ to get
 
     \[ g(z) = p(z)h(z) + r(z) \]
 
@@ -795,7 +801,7 @@ of \ref{thm:works}.
   minimal polynomial of $a$ over $k_1(z)$, we find that $z$ would have to be
   algebraic with respect to $k_1(a)$.
 
-  Since $k_1(c)$ is in $k_0$, this would mean that $z$ is in $k_0$. This would
+  Since $k_1(a)$ is in $k_0$, this would mean that $z$ is in $k_0$. This would
   imply that $k\subseteq k_0$, and $p$ would be trivial on all of $k$ -- which
   is a contradiction.
 \end{proof}
@@ -840,7 +846,7 @@ the following subfield of $k$:
 
 In both cases, $\ppn$ is some divisor in $\rmm$ that divides $\pin$. Since the
 product formula, when applied to elements of $K$, reduces to the formula of the
-main theorem (TODO LINK), there must be at least one such $\ppn$ (since all
+main theorem, there must be at least one such $\ppn$ (since all
 other valuations are less than $1$ for $\alpha\in K$, but the product must be
 equal to $1$). The other primes are called \textit{finite}.
 
@@ -887,10 +893,12 @@ The idea behind the proof is to show that $k$ is a finite extension of $K$.
 \begin{lemma}
   Let $M$ be the order of the set of elements $\alpha\in k$ contained in a
   parallelotope of dimensions $x_\pp$. If $\qq$ is a prime satisfying
-  \ref{eq:axiom2}, we can find some $B_\qq$ depending on $\qq$ such that either
-  $M = 1$ (which happens if the set only contains $\alpha=0$), or
+  \ref{eq:axiom2}, we can find some $B_\qq$ depending only on $\qq$ such that
+  either $M = 1$ (which happens if the set only contains $\alpha=0$), or
 
   \[ M \leq B_\qq  {\left( \prod_\pp x_\pp \right)} ^{1/\rho(\qq)} \]
+
+  for all $x_\pp$.
 \end{lemma}
 
 \begin{proof}
@@ -928,7 +936,7 @@ The idea behind the proof is to show that $k$ is a finite extension of $K$.
   of elements $\alpha$ such that
 
   \begin{itemize}
-  \item $\val\alpha\pp\leq a_\pp = \max\left( \val{\alpha_1}\pp,\val{\alpha_2}\pp,\ldots,\val{\alpha_l}\pp\right)$
+  \item $\val\alpha\pp\leq a_\pp := \max\left( \val{\alpha_1}\pp,\val{\alpha_2}\pp,\ldots,\val{\alpha_l}\pp\right)$
   \item $\val\alpha\ppn \leq B\cdot\val y\ppn$ for a certain constant $B$.
   \item If there is a field of constants $\koo$, then $\rs$ is a $\koo$-vector space.
   \item The order of $\rs$ satisfies
@@ -940,7 +948,7 @@ The idea behind the proof is to show that $k$ is a finite extension of $K$.
 \end{proof}
 
 \begin{lemma}
-  The degree $n := [k:K]$ is finite; every $\pp$ of $M$ satisfies
+  The degree $n := [k:K]$ is finite; every $\pp$ of $\rmm$ satisfies
   \ref{eq:axiom2}, and we have
 
   \[ n \leq \frac1{\rho(\pp)} \cdot \sum_{\ppn}\lambda(\ppn) \]
@@ -963,11 +971,13 @@ With this, we have completed the proof of the following result:
   \end{itemize}
   of finite degree $n$.
 
-  $\rmm$ consists of all extensions of the standard valuations on $K$ (which we
-  know from Ostrowski's theorem). We can, after raising all the valuations in the
-  product formula to some fixed power, assume they are normed. We have
+  % We have
 
-  \[ \sum_{\pp|p}n(\pp) = n \]
+  % \[ \sum_{\pp|p}n(\pp) = n \]
 
-  for all $p\in K$.
+  % for all $p\in K$.
 \end{thm}
+
+Here $\rmm$ consists of all extensions of the standard valuations on $K$ (which we
+know from Ostrowski's theorem). We can, after raising all the valuations in the
+product formula to some fixed power, assume they are normed.
